@@ -1,6 +1,6 @@
-# Laravel eCommerce (Quick Done)
+# Laravel eCommerce (Complete Project)
 
-It's a eCommerce site, working on.
+comming soon.....
 
 **Version**: 1.0 Release of the Laravel eCommerce.
 
