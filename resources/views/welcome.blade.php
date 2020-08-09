@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel eCommerce 
+                     786 || eCommerce 
                 </div>
 
                <!--  <div class="links">
