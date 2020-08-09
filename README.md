@@ -49,7 +49,9 @@ comming soon.
 ## Technologies and libraries
 
 - Laravel 7+, PHP 7+.
-- Vue.js for ASP.
+- JavaScript & VueJS Framework.
+- Bootstrap eCommerce UI Kit
+- Vali Admin 
 
 ## Further Development
 
@@ -109,8 +111,5 @@ DB_PASSWORD=password
 
 ## References
 
-- https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html
-- https://aws.amazon.com/blogs/startups/scaling-on-aws-part-3-500k-users
-- https://laravel-json-api.readthedocs.io/en/latest/features/http-clients/
-- https://socialiteproviders.netlify.com/providers/twitch.html
-- https://www.quora.com/What-are-the-Laravel-best-practices
+- http://bootstrap-ecommerce.com/
+- https://github.com/pratikborsadiya/vali-admin
