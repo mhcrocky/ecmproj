@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,7 @@ class LoginController extends Controller
 	* redirect after login 
 	* @var staring
 	*/
-	protected $redirectTo = 'admins';
+	protected $redirectTo = '/admin';
 
 	/* 
 	* Create a new controller instance
@@ -25,7 +26,7 @@ class LoginController extends Controller
 		
 		\Log::info("Request= Admin/LoginController@__construct called");
 
-		$this->middleware('guest::admin')->except('logout');
+		$this->middleware('guest:admin')->except('logout');
 	}
 
 	/**
