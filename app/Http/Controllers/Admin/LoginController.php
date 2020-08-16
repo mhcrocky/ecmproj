@@ -43,19 +43,21 @@ class LoginController extends Controller
 		
 		\Log::info("Request= Admin/LoginController@login called");
 
-		$this->validate($request,[
-			'email' => 'required|email',
-			'password' => 'required|min:6'
+		$request->validate([
+			'email' => 'required|email|max:30',
+			'password' => 'required|max:20|min:5'
 		]);
 
 		if(Auth::guard('admin')->attempt([
 			'email' => $request->email,
 			'password' => $request->password
-		], $request->get('remember'))) {
-			return redirect()->indended(route('admin.dashboard'));
+		], $request->get('remember'))){
+			
+			return redirect()->intended(route('admin.dashboard'));
 		}
-
+		
 		return back()->withInput($request->only('email', 'password'));
+		
 	}
 
 	public function logout(Request $request){
@@ -65,5 +67,6 @@ class LoginController extends Controller
 		$request->session()->invalidate();
 
 		return redirect()->route('admin.login');
+		
 	}
 }
