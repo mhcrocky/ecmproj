@@ -29,6 +29,7 @@
                         <strong> {{ $message }}</strong>
                     </span>
                 @enderror
+                
             </div>
             <div class="form-group">
                 <label class="control-label" for="password">Password</label>

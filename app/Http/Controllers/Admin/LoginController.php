@@ -22,6 +22,7 @@ class LoginController extends Controller
 	* @return void
 	*/
 	public function __construct(){
+		
 		\Log::info("Request= Admin/LoginController@__construct called");
 
 		$this->middleware('guest::admin')->except('logout');
@@ -31,12 +32,14 @@ class LoginController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 	public function showLoginForm(){
+		
 		\Log::info("Request= Admin/LoginController@showLoginForm called");
 
 		return view('admin.auth.login');
 	}
 
 	public function login(Request $request){
+		
 		\Log::info("Request= Admin/LoginController@login called");
 
 		$this->validate($request,[
