@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 require 'admin.php';
 
+Route::get('/login', function(){
+	return 'login page';
+})->name('login');
+
 
