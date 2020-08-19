@@ -24,7 +24,7 @@ class SettingServiceProvider extends ServiceProvider
         });
 
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias('Seeting', Seeting::class);
+        $loader->alias('Setting', Setting::class);
     }
 
     /**
@@ -39,7 +39,7 @@ class SettingServiceProvider extends ServiceProvider
         if(!\App::runningInConsole() && count(Schema::getColumnListing('settings'))){
             $settings = Setting::all();
             foreach($settings as $key => $setting){
-                Config::set('settings.'.$Setting->key, $Setting->value);
+                Config::set('settings.'.$setting->key, $setting->value);
             }
         }
     }

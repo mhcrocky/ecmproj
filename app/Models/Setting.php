@@ -29,8 +29,8 @@ class Setting extends Model
     * return bool
     */
     public static function set($key, $value = null){
-    	$Setting = new self();
-    	$entry = $settings->where('key', $key)->firstOrFail();
+    	$setting = new self();
+    	$entry = $setting->where('key', $key)->firstOrFail();
     	$entry->value = $value;
     	$entry->saveOrFail();
     	// Set Config key -->

@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Setting;
 
 class SettingsTableSeeder extends Seeder
 {
-	protected $seetings = [
+	protected $settings = [
 		[
 			'key'		=>	'site_name',
 			'value'		=>	'E-Commerce App'
@@ -22,7 +23,7 @@ class SettingsTableSeeder extends Seeder
 			'value'		=>	'USD'
 		],
 		[
-			'key'		=>	'currenncy_symbol',
+			'key'		=>	'currency_symbol',
 			'value'		=>	'$'
 		],
 		[
@@ -104,7 +105,7 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-    	foreach($this->settings as $index => $Setting){
+    	foreach($this->settings as $index => $setting){
     		$result = Setting::create($setting);
     		if(!$result){
     			$this->command->info("Insert failed at record $index. ");
