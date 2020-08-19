@@ -1,7 +1,11 @@
 <?php
 namespace App\Traits;
 
-trails UploadAble{
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+Trait UploadAble{
 
 	/**
 	* @param UploadedFile $file
@@ -16,7 +20,7 @@ trails UploadAble{
 
 		return $file->storeAs(
 			$folder,
-			$name.".".$file->getClientOriginalExtention(),
+			$name.".".$file->getClientOriginalExtension(),
 			$disk
 		);
 	}

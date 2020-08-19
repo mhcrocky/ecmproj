@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Traits\UploadAble;
+use Illuminate\Http\UploadedFile;
 
 class SettingController extends BaseController
 {
+	use UploadAble;
+	
     /**
     * @return \Illuminate\Contracts\View\Factory | \Illuminate\View\View
     */

@@ -15,16 +15,16 @@ class SettingsTableSeeder extends Seeder
 			'value'		=>	'E-Commerce'
 		],
 		[
-			'key'		=>	'default_email',
+			'key'		=>	'default_email_address',
 			'value'		=>	'admin@admin.com'
 		],
 		[
 			'key'		=>	'currency_code',
-			'value'		=>	'USD'
+			'value'		=>	'GBP'
 		],
 		[
 			'key'		=>	'currency_symbol',
-			'value'		=>	'$'
+			'value'		=>	'£'
 		],
 		[
 			'key'		=>	'site_logo',
