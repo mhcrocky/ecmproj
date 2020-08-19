@@ -7,7 +7,7 @@ namespace App\Traits;
 * @package App\Traits
 */
 
-Trait FlashMessage {
+Trait FlashMessages {
 	protected $successMessages = [];
 	protected $warningMessages = [];
 	protected $errorMessages = [];
