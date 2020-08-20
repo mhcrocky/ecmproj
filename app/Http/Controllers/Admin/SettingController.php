@@ -11,11 +11,12 @@ use Illuminate\Http\UploadedFile;
 class SettingController extends BaseController
 {
 	use UploadAble;
-	
+
     /**
     * @return \Illuminate\Contracts\View\Factory | \Illuminate\View\View
     */
     public function index(){
+    	\Log::info("Req=Admin/Setting@index called");
     	$this->setPageTitle('Settings', 'Manage Settings');
     	return view('admin.settings.index');
     }
@@ -26,13 +27,13 @@ class SettingController extends BaseController
     * @return \Illuminate\Http\RedirectResponse
     */
     public function update(Request $request){
-    	\Log::info("Req=Setting@update called");
+    	\Log::info("Req=Admin/Setting@update called");
     	if($request->has('site_logo') && $request->file('site_logo') instanceof UploadedFile){
     		// logo exists -->
     		if(config('settings.site_logo') != null ) {
 				$this->deleteOne(config('settings.site_logo'));
 			}
-			// new logo upload -->
+			// New logo upload -->
 			$logo = $this->uploadOne($request->file('site_logo'), 'img');
 			Setting::set('site_logo', $logo);
 

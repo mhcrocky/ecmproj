@@ -12,27 +12,28 @@ class BaseController extends Controller
     /**
     * @var null
     */
-
     protected $data = null;
 
+    
     /**
     * @param $title
     * @param $subTitle
     */
     protected function setPageTitle($title, $subTitle){
-    	view()->share(['pageTitle' => $title, 'subTitle' => $subTitle]);
+        \Log::info("Req=BaseController@setPageTitle called");
+        view()->share(['pageTitle' => $title, 'subTitle' => $subTitle]);
     }
 
+    
     /**
     * @param int $errorCode
     * @param null $message
     * @return \Illuminate\Http\Response
     */
     protected function showErrorPage($errorCode =404, $message = null){
-
-    	$data['message'] = $message;
-
-    	return response()->view('errors.'.$errorCode, $data, $errorCode);
+        \Log::info("Req=BaseController@showErrorPage called");
+        $data['message'] = $message;
+        return response()->view('errors.'.$errorCode, $data, $errorCode);
 
     }
 
@@ -45,13 +46,13 @@ class BaseController extends Controller
     * @return \Illuminate\Http\JsonResponse
     */
     protected function responseJson($error = true, $responseCode = 200, $message = [], $data = null){
-
-    	return response()->json([
-    		'error'			=> $error,
-    		'response_code'	=> $responseCode,
-    		'message' 		=> $message,
-    		'data' 			=> $data
-    	]);
+        \Log::info("Req=BaseController@responseJson called");
+        return response()->json([
+          'error'			=> $error,
+          'response_code'	=> $responseCode,
+          'message' 		=> $message,
+          'data' 			=> $data
+      ]);
     }
 
 
@@ -64,17 +65,17 @@ class BaseController extends Controller
     * @return \Illuminate\Http\RedirectResponse
     */
     protected function responseRedirect($route, $message, $type = 'info', $error = false, $withOldInputWhenError = false){
-    	
-    	$this->setFlashMessage($message, $type);
-    	$this->showFlashMessages();
+        \Log::info("Req=BaseController@responseRedirect called");
+        $this->setFlashMessage($message, $type);
+        $this->showFlashMessages();
+    	// Errors with input value -->
+        if($error && $withOldInputWhenError){
+          return redirect()->back()->withInput();
+      }
+      return redirect()->route($route);
+  }
 
-    	if($error && $withOldInputWhenError){
-    		return redirect()->back()->withInput();
-    	}
-
-    	return redirect()->route($route);
-    }
-
+  
     /**
     * @param $message
     * @param string $type
@@ -83,10 +84,10 @@ class BaseController extends Controller
     * @return \Illuminate\Http\RedirectResponse
     */
     protected function responseRedirectBack($message, $type = 'info', $error = false, $withOldIinputWhenError = false){
-    	$this->setFlashMessage($message, $type);
-    	$this->showFlashMessages();
-
-    	return redirect()->back();
+        \Log::info("Req=BaseController@responseRedirectBack called");
+        $this->setFlashMessage($message, $type);
+        $this->showFlashMessages();
+        return redirect()->back();
     }
 
 }

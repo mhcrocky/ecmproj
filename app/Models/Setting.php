@@ -15,6 +15,7 @@ class Setting extends Model
     * @param key
     */
     public static function get($key){
+        \Log::info("Req=Models/Setting@get called");
     	$setting = new self();
     	$entry = $setting->where('key', $key)->first();
     	if(!$entry){
@@ -29,6 +30,7 @@ class Setting extends Model
     * return bool
     */
     public static function set($key, $value = null){
+        \Log::info("Req=Models/Setting@set called");
     	$setting = new self();
     	$entry = $setting->where('key', $key)->firstOrFail();
     	$entry->value = $value;
