@@ -14,8 +14,8 @@
 
 <div class="row">
 	<dev class="col-md-12">
-		<div class="title">
-			<div class="title-body">
+		<div class="tile">
+			<div class="tile-body">
 				<table class="table table-hover table-bordered" id="sampleTable">
 					<thead>
 						<tr>
