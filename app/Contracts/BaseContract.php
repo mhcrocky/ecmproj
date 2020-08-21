@@ -1,5 +1,5 @@
 <?php
-namespace App\Contacts;
+namespace App\Contracts;
 
 interface BaseContract{
 
@@ -17,7 +17,7 @@ interface BaseContract{
 	* @param int $id
 	* @return  mixed
 	*/
-	public function update(array attributes, int $id);
+	public function update(array $attributes, int $id);
 
 
 	/**
@@ -27,7 +27,7 @@ interface BaseContract{
 	* @param string sortBy
 	* @return mixed
 	*/
-	public function all($columns = array(*), string $orderBy = 'id', string $sortBy = 'desc');
+	public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
 
 
 	/**

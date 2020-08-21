@@ -1,18 +1,26 @@
 <?php
 
 namespace App\Repositories;
-
+ 
 use App\Contracts\BaseContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-class BaseRepository implements BaseContract{
-
-	protected $model;
-	
-	/**
-	* @param Illuminate\Database\Eloquent\Model
-	*/
+/**
+ * Class BaseRepository
+ *
+ * @package \App\Repositories
+ */
+class BaseRepository implements BaseContract
+{
+    /**
+     * @var Model
+     */
+    protected $model;
+ 
+    /**
+     * BaseRepository constructor.
+     * @param Model $model
+     */
 	public function __construct(Model $model){
 		\Log::info("Req=Repositories/BaseRepository@__construct called");
 		$this->model = $model;
@@ -32,23 +40,40 @@ class BaseRepository implements BaseContract{
 	* @param int id
 	* @return bool
 	*/
-	public function upate(array $attributes, int $id) : bool{
+	public function update(array $attributes, int $id) : bool{
 		\Log::info("Req=Repositories/BaseRepository@update called");
 		return $this->find($id)->update($attributes);
 	}
 
 	/**
-	* @param array $colums
+	* @param array $columns
 	* @param string $orderBy
 	* @param string $sortBy
 	* @return mixed
 	*/
-	public function all($coloums = array(*), string $orderBy = 'id', string $sortBy = 'asc'){
+	public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'asc'){
 		\Log::info("Req=Repositories/BaseRepository@all called");
-		return $this->model->orderBy($orderBy, $sortBy)->get($coloums);
+		return $this->model->orderBy($orderBy, $sortBy)->get($columns);
 	}
 
 
+	/**
+	* @param int $id
+	* @return mixed
+	*/
+	public function find($id){
+		\log::info("Req=Repositors/BaseRepository@find called");
+		return $this->model->find($id);
+	}
+
+	/**
+	* @param array $data
+	* @return mixed
+	*/
+	public function findBy(array $data){
+		\Log::info("Req=Repositories/BaseRepository@findBy called");
+		return $this->model->where($data)->all();
+	}
 	/**
 	* @param int $id
 	* @return mixed

@@ -1,7 +1,9 @@
 <?php
 namespace App\Repositories;
+
 use App\Repositories\BaseRepository;
-use App\Trails\UploadAble;
+use App\Contracts\CategoryContract;
+use App\Traits\UploadAble;
 use App\Models\Category;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -68,7 +70,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 			$category->save();
 			return $category;
 		}catch(QueryException $exception){
-			throw new InvalidArgumentException($exception->getMessge());
+			throw new InvalidArgumentException($exception->getMessage());
 			
 		}
 	}
