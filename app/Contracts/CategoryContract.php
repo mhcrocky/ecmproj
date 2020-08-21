@@ -6,7 +6,6 @@ namespace App\Contracts;
 * @package App\Contracts
 */
 interface CategoryContract{
-	\Log::info("Req=interface@CategoryContract Called");
 	
 	/**
 	* @param string $order
