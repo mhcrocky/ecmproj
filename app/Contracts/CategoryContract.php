@@ -6,14 +6,15 @@ namespace App\Contracts;
 * @package App\Contracts
 */
 interface CategoryContract{
-
+	\Log::info("Req=interface@CategoryContract Called");
+	
 	/**
 	* @param string $order
 	* @param string $sort
 	* @param array $columns
 	* @return mixed
 	*/
-	public function listCategories(String $order = 'id', string $sort= 'desc', array $columns =['*']);
+	public function listCategories(String $order = 'id', string $sort = 'desc', array $columns = ['*']);
 
 	/**
 	* @param int $id
