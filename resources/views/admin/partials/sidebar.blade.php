@@ -21,9 +21,9 @@
           </a>
      </li>
      <li>
-          <a class="app-manu__item {{ Route::currentRouteName() == 'admin.create.index' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
-               <i class="app-manu__icon fa fa-tags"></i>
-               <span class="app-manu__lable">Categories</span>
+          <a class="app-menu__item {{ Route::currentRouteName() == 'admin.create.index' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
+               <i class="app-menu__icon fa fa-tags"></i>
+               <span class="app-menu__lable">Categories</span>
           </a>
      </li>
 </ul>

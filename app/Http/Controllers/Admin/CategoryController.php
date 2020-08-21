@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Contracts\CategoryContract;
 
@@ -10,7 +10,7 @@ use App\Contracts\CategoryContract;
 * Class CategoryController
 * @package App\Http\Controller\Admin
 */
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
 
 	/**
