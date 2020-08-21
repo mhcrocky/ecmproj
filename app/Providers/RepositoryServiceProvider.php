@@ -8,7 +8,11 @@ use App\Repositories\CategoryRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
+    /**
+    * @var $repositories
+    */
     protected $repositories = [ CategoryContract::class => CategoryRepository::class ];
+    
     /**
      * Register services.
      *

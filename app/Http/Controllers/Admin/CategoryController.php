@@ -34,4 +34,13 @@ class CategoryController extends BaseController
 		$this->setPageTitle('Categories', 'List of all categories');
 		return view('admin.categories.index', compact('categories'));
 	}
+
+	/**
+	* @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	*/
+	public function create(){
+		$categories = $this->categoryRepository->listCategories('id', 'asc');
+		$this->setPageTitle('Categories', 'Create Category');
+		return view('admin.categories.create', compact('categories'));
+	}
 }
