@@ -3,11 +3,12 @@ namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
 use App\Contracts\CategoryContract;
-use App\Traits\UploadAble;
 use App\Models\Category;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Http\UploadedFile;
+use App\Traits\UploadAble;
 
 class CategoryRepository extends BaseRepository implements CategoryContract{
 
@@ -84,19 +85,17 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 		$category = $this->findCategoryById($params['id']);
 
 		$collection = collect($params)->except('_token');
-		$image = null;
+		$image = $category->image;
 
 		if($collection->has('image') && ($params['image'] instanceof UploadedFile)){
 			if($category->image != null){
 				$this->deleteOne($category->image);
 			}
-
 			$image = $this->uploadOne($params['image'], 'categories');
 		}
 
 		$featured = $collection->has('featured') ? 1 : 0;
 		$menu = $collection->has('menu') ? 1 : 0;
-
 		$merge = $collection->merge(compact('menu', 'image', 'featured'));
 		$category->update($merge->all());
 

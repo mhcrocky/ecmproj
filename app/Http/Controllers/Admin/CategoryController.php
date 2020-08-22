@@ -26,7 +26,7 @@ class CategoryController extends BaseController
 	* @param CategoryContract $categoryRepository
 	*/
 	public function __construct(CategoryContract $categoryRepository){
-		\Log::info("Req=CategoryController@__construct Called");
+		\Log::info("Req=CategoryController@__construct called");
 		$this->categoryRepository = $categoryRepository;
 	}
 
@@ -34,7 +34,7 @@ class CategoryController extends BaseController
 	* @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	*/
 	public function index(){
-		\Log::info("Req=CategoryController@index Called");
+		\Log::info("Req=CategoryController@index called");
 		$categories = $this->categoryRepository->listCategories();
 		$this->setPageTitle('Categories', 'List of all categories');
 		return view('admin.categories.index', compact('categories'));
@@ -44,7 +44,7 @@ class CategoryController extends BaseController
 	* @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	*/
 	public function create(){
-		\Log::info("Req=CategoryController@create Called");
+		\Log::info("Req=CategoryController@create called");
 		$categories = $this->categoryRepository->listCategories('id', 'asc');
 		$this->setPageTitle('Categories', 'Create Category');
 		return view('admin.categories.create', compact('categories'));
@@ -56,7 +56,7 @@ class CategoryController extends BaseController
 	* @throws \Illuminate\Validation\ValidationException
 	*/
 	public function store(Request $request){
-		\Log::info("Req=CategoryController@store Called");
+		\Log::info("Req=CategoryController@store called");
 		$this->validate($request, [
 			'name'		=>	'required|max:191',
 			'parent_id'	=>	'required|not_in:0',
@@ -79,11 +79,30 @@ class CategoryController extends BaseController
 	* @return \Illuminate\Contracts\View\Factory|\Illumniate\View\View
 	*/
 	public function edit($id){
-		\Log::info("Req=CategoryController@edit Called");
+		\Log::info("Req=CategoryController@edit called");
 		$targetCategory = $this->categoryRepository->findCategoryById($id);
 		$categories = $this->categoryRepository->listCategories();
 
-		$this->setPageTitle('Categories', 'Edit Category :'. $targetCategory->name);
+		$this->setPageTitle('Categories', 'Edit Category : '. $targetCategory->name);
 		return view('admin.categories.edit', compact('targetCategory', 'categories'));
+	}
+
+	public function update(Request $request){
+		\Log::info("Req=CategoryController@update called");
+		$this->validate($request,[
+			'name'		=>	'required|max:191',
+			'parent_id'	=>	'required|not_in:0',
+			'image'		=> 	'mimes:jpeg,jpg,png|max:1000'
+		]);
+
+		$params = $request->except('_token');
+		$updateCategory = $this->categoryRepository->updateCategory($params);
+
+		if(!$updateCategory){
+			return $this->responseRedirectBack('Error occured while update category', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.categories.index', 'Category updated successfully', 'success');
+
 	}
 }
