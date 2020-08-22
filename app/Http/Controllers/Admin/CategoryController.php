@@ -72,4 +72,18 @@ class CategoryController extends BaseController
 
 		return $this->responseRedirect('admin.categories.index', 'Category added successfully', 'success', false, false);
 	}
+
+	
+	/**
+	* @param int $id
+	* @return \Illuminate\Contracts\View\Factory|\Illumniate\View\View
+	*/
+	public function edit($id){
+		\Log::info("Req=CategoryController@edit Called");
+		$targetCategory = $this->categoryRepository->findCategoryById($id);
+		$categories = $this->categoryRepository->listCategories();
+
+		$this->setPageTitle('Categories', 'Edit Category :'. $categoryRepository->name);
+		return view('admin.categories.edit', compact('targetCategory', 'categories'));
+	}
 }
