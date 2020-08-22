@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedInteger('parent_id')->default(1)->nullable();
             $table->boolean('featured')->default(0);
             $table->boolean('menu')->default(1);
-            $table->boolean('image')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
