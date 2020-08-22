@@ -50,27 +50,26 @@ class CategoryController extends BaseController
 		return view('admin.categories.create', compact('categories'));
 	}
 
+	/**
+	* @param Request $request
+	* @return \IIluminate\Http\RedirectResponse
+	* @throws \Illuminate\Validation\ValidationException
+	*/
 	public function store(Request $request){
 		\Log::info("Req=CategoryController@store Called");
 		$this->validate($request, [
 			'name'		=>	'required|max:191',
 			'parent_id'	=>	'required|not_in:0',
-			'image'		=>	'mimes:jpg,jpeg,png|max:1000'
+			'image'		=>	'required|mimes:jpg,jpeg,png|max:1000'
 		]);
 
 		$params = $request->except('_token');
-		$params = collect($params);
-		// $category = $this->categoryRepository->createCategory($params);
-		$featured = $params->has('featured') ? 1 : 0;
-		$menu = $params->has('menu') ? 1 : 0;
-
-		if($params->has('image') && $request->file('image') instanceof UploadedFile){
-			$image = $this->uploadOne($request->file('image'), 'categories');
-
+		
+		$category = $this->categoryRepository->createCategory($params);
+		if(!$category){
+			return $this->responseRedirectBack('Error occurred while creating category', 'error', true, true);
 		}
 
-		$params = $params->merge(compact('featured','menu', 'image'));
-
-		dd($params);
+		return $this->responseRedirect('admin.categories.index', 'Category added successfully', 'success', false, false);
 	}
 }

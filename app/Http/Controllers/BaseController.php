@@ -30,7 +30,7 @@ class BaseController extends Controller
     * @param null $message
     * @return \Illuminate\Http\Response
     */
-    protected function showErrorPage($errorCode =404, $message = null){
+    protected function showErrorPage($errorCode = 404, $message = null){
         \Log::info("Req=BaseController@showErrorPage called");
         $data['message'] = $message;
         return response()->view('errors.'.$errorCode, $data, $errorCode);
