@@ -58,12 +58,12 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 			$collection = collect($params);
 			$image = null;
 
-			if($collection->has('image') && ($params['image'] instanceof UploadAble)){
+			if($collection->has('image') && ($params['image'] instanceof UploadedFile)){
 				$image = $this->uploadOne($params['image'], 'categories');
 			}
 
 			$featured = $collection->has('featured') ? 1 : 0;
-			$ModelNotFoundException = $collection->has('menu') ? 1 : 0;
+			$menu = $collection->has('menu') ? 1 : 0;
 
 			$merge = $collection->merge(compact('menu', 'image', 'featured'));
 			$category = new Category($merge->all());

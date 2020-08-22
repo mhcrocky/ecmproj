@@ -19,6 +19,7 @@ Trait FlashMessages {
 	*/
 	protected function setFlashMessage($message, $type){
 		$model = 'infoMessages';
+		
 		switch($type){
 			
 			case 'success':
@@ -53,10 +54,10 @@ Trait FlashMessages {
 	*/
 	protected function getFlashMessages(){
 		return [
-			'success' => $this->successMessages,
-			'warning' => $this->warningMessages,
-			'error' => $this->errorMessages,
-			'info' => $this->infoMessages,
+			'success'		=>	$this->successMessages,
+			'warning'		=>	$this->warningMessages,
+			'error' 		=>	$this->errorMessages,
+			'info' 			=>	$this->infoMessages,
 		];
 	}
 
