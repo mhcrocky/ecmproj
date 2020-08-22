@@ -87,6 +87,11 @@ class CategoryController extends BaseController
 		return view('admin.categories.edit', compact('targetCategory', 'categories'));
 	}
 
+	/**
+	* @param Request $request
+	* @return \Illuminate\Http\RedirectResponse
+	* @throws \Illuminate\Validate\ValidateException
+	*/
 	public function update(Request $request){
 		\Log::info("Req=CategoryController@update called");
 		$this->validate($request,[
@@ -104,5 +109,15 @@ class CategoryController extends BaseController
 
 		return $this->responseRedirect('admin.categories.index', 'Category updated successfully', 'success');
 
+	}
+
+	public function delete($id){
+		\Log::info("Req=CategoryController@delete called");
+		$deleteCategory = $this->categoryRepository->deleteCategory($id);
+		if(!$deleteCategory){
+			return $this->responseRedirectBack('Error occurred while deleting categories', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.categories.index', 'Category deleted successfully', 'success');
 	}
 }
