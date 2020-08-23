@@ -15,7 +15,7 @@ class Attribute extends Model
     * @var array
     */
     protected $fillable = [
-    	'code', 'name', 'frontend_type', 'is_fillable', 'is_required'
+    	'code', 'name', 'frontend_type', 'is_filterable', 'is_required'
     ];
 
     /**

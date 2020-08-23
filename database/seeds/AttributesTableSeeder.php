@@ -16,7 +16,7 @@ class AttributesTableSeeder extends Seeder
     	Attribute::create([
     		'code'			=>	'size',
     		'name'			=>	'size',
-    		'fronted_type'	=>	'select',
+    		'frontend_type'	=>	'select',
     		'is_filterable'	=>	1,
     		'is_required'	=>	1
     	]);
@@ -25,7 +25,7 @@ class AttributesTableSeeder extends Seeder
     	Attribute::create([
     		'code'			=>	'color',
     		'name'			=>	'color',
-    		'fronted_type'	=>	'select',
+    		'frontend_type'	=>	'select',
     		'is_filterable'	=>	1,
     		'is_required'	=>	1
     	]);

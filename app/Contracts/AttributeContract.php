@@ -10,4 +10,10 @@ interface AttributeContract{
 	* @return mixed
 	*/
 	public function listAttributes(string $order = 'id', string $sort = 'desc',array $columns = ['*']);
+
+	/**
+	* @param array $params
+	*/
+	public function createAttribute(array $params);
+
 }
