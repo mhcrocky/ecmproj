@@ -23,6 +23,12 @@ Route::group(['prefix' => 'admin'], function() {
 			Route::post('/update', 'Admin\CategoryController@update')->name('admin.categories.update');
 			Route::get('/{id}/delete','Admin\CategoryController@delete')->name('admin.categories.delete');
 		});
+
+		Route::group(['prefix' => 'attributes'], function(){
+			Route::get('/', 'Admin\AttributeController@index')->name('admin.attributes.index');
+		});
+
+
 	});
 
 });

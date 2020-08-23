@@ -6,12 +6,18 @@ use Illuminate\Support\ServiceProvider;
 use App\Contracts\CategoryContract;
 use App\Repositories\CategoryRepository;
 
+use App\Contracts\AttributeContract;
+use App\Repositories\AttributeRepository;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
     * @var $repositories
     */
-    protected $repositories = [ CategoryContract::class => CategoryRepository::class ];
+    protected $repositories = [
+        CategoryContract::class         =>  CategoryRepository::class,
+        AttributeContract::class        =>  AttributeRepository::class
+    ];
     
     /**
      * Register services.

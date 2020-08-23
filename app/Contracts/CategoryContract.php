@@ -8,12 +8,12 @@ namespace App\Contracts;
 interface CategoryContract{
 	
 	/**
+	* @param array $columns
 	* @param string $order
 	* @param string $sort
-	* @param array $columns
 	* @return mixed
 	*/
-	public function listCategories(String $order = 'id', string $sort = 'desc', array $columns = ['*']);
+	public function listCategories(array $columns = ['*'], string $order = 'id', string $sort = 'desc');
 
 	/**
 	* @param int $id
