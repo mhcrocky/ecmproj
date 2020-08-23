@@ -19,8 +19,17 @@ class AttributeController extends BaseController
     */
     public function index(){
     	\Log::info("Req=AttributeController@index called");
-    	$this->setPageTitle('Attributes', 'Attributes Page');
-    	$categories = $this->attributeRepository->listAttributes();
-    	return view('admin.attributes.index', compact('categories'));
+    	$this->setPageTitle('Attributes', 'List of all attributes');
+    	$attributes = $this->attributeRepository->listAttributes();
+    	return view('admin.attributes.index', compact('attributes'));
+    }
+
+    /**
+    * @
+    */
+    public function create(){
+    	\Log::info("Req=AttributeController@create called");
+    	$this->setPageTitle('Attributes', 'Create Attribute');
+    	return view('admin.attributes.create');
     }
 }
