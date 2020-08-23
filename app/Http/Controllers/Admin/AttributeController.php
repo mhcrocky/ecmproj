@@ -53,4 +53,14 @@ class AttributeController extends BaseController
 
     	return responseRedirect('admin.attributes.index', 'Attribute added successfully', 'success');
     }
+
+    /**
+    * @param int $id
+    */
+    public function edit($id){
+        \Log::info("Req=AttributeController@edit called");
+        $this->setPageTitle('Attribute', 'Edit Attribute');
+        $attribute = $this->attributeRepository->findAttributeById($id);
+        return view('admin.attributes.edit', compact('attribute'));
+    }
 }

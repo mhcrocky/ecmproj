@@ -49,5 +49,19 @@ Class AttributeRepository extends BaseRepository implements AttributeContract{
 		}
 	}
 
+	/**
+	* @param int $id
+	* @return mixed
+	*/
+	public function findAttributeById($id){
+		\Log::info("Req=Repositories\AttributeRepository@findAttributeById called");
+		try{
+			return $this->findOneOrFail($id);
+		}catch(ModelNotFoundExceeption $e){
+			throw new ModelNotFoundExceeption($e);
+		}
+	}
+
+
 
 }

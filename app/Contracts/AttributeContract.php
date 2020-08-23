@@ -16,4 +16,9 @@ interface AttributeContract{
 	*/
 	public function createAttribute(array $params);
 
+	/**
+	* @param int $id
+	*/
+	public function findAttributeById($id);
+
 }

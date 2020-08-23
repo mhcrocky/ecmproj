@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function() {
 			Route::get('create', 'Admin\AttributeController@create')->name('admin.attributes.create');
 			Route::post('store', 'Admin\AttributeController@store')->name('admin.attributes.store');
 			Route::get('{id}/edit', 'Admin\AttributeController@edit')->name('admin.attributes.edit');
+			Route::post('update', 'Admin\AttributeController@update')->name('admin.attributes.update');
 			Route::delete('{id}/delete', 'Admin\AttributeController@delete')->name('admin.attributes.delete');
 		});
 
