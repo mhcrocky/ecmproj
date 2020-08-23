@@ -39,7 +39,7 @@ class AttributeController extends BaseController
     public function store(Request $request){
     	\Log::info("Req=AttributeController@store called");
     	$this->validate($request,[
-    		'code'			=>	'required',
+    		'code'			=>	'required|unique:attributes',
     		'name'			=>	'required',
     		'frontend_type'	=>	'required|not_in:0'
     	]);
@@ -73,10 +73,10 @@ class AttributeController extends BaseController
         \Log::info("Req=AttributeController@update called");
         
         $this->validate($request,[
-         'code'           =>  'required',
-         'name'           =>  'required',
-         'frontend_type'  =>  'required|not_in:0'
-     ]);
+            'code'           =>  'required|unique:attributes',
+            'name'           =>  'required',
+            'frontend_type'  =>  'required|not_in:0'
+        ]);
         
         $params = $request->except('_token');
         
@@ -95,7 +95,7 @@ class AttributeController extends BaseController
     public function delete($id){
         \Log::info("Req=AttributeController@delete called");
         $deleteAttribute = $this->attributeRepository->deleteAttribute($id);
-        
+
         if(!$deleteAttribute){
             return $this->responseRedirectBack('Error occurred while deleting attribute', 'error', true, true);
         }
