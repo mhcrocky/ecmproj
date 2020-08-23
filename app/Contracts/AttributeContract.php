@@ -21,4 +21,9 @@ interface AttributeContract{
 	*/
 	public function findAttributeById($id);
 
+	/**
+	* @param array $params
+	*/
+	// public function updateAttribute(array $params);
+
 }

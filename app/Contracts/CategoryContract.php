@@ -13,8 +13,7 @@ interface CategoryContract{
 	* @param string $sort
 	* @return mixed
 	*/
-	public function listCategories(array $columns = ['*'], string $order = 'id', string $sort = 'desc');
-
+	public function listCategories(string $order = 'id', string $sort = 'desc',array $columns = ['*']);
 	/**
 	* @param int $id
 	* @return mixed

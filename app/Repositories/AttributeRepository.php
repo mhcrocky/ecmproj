@@ -62,6 +62,37 @@ Class AttributeRepository extends BaseRepository implements AttributeContract{
 		}
 	}
 
+	/**
+	* @param array $params
+	* @return mixed
+	*/
+	public function updateAttribute(array $params){
+		\Log::info("Req=Repositories/AttributeRepository@updateAttribute called");
+		try {
+			$attribute = $this->findAttributeById($params['id']);
+			$collect = collect($params)->except('_token');
+			$is_filterable = $collect->has('is_filterable') ? 1 : 0;
+			$is_required = $collect->has('is_required') ? 1 : 0;
+			$merge = $collect->merge(compact('is_filterable', 'is_required'));
+			// dd($merge);
+			$attribute->update($merge->all());
+			return $attribute;
+		} catch (Exception $e) {
+			throw new $e->getMessage();
+		}
+		
+	}
+
+	/**
+	* @param int $id
+	*/
+	public function deleteAttribute($id){
+		\Log::info("Req=Repositories/AttributeRepository@deleteAttribute called");
+		$attribute = $this->findOneOrFail($id);
+		$attribute->delete();
+		return $attribute;
+	}
+
 
 
 }

@@ -39,7 +39,7 @@ class AttributeController extends BaseController
     public function store(Request $request){
     	\Log::info("Req=AttributeController@store called");
     	$this->validate($request,[
-    		'code'			=>	'required|unique,code',
+    		'code'			=>	'required',
     		'name'			=>	'required',
     		'frontend_type'	=>	'required|not_in:0'
     	]);
@@ -48,10 +48,10 @@ class AttributeController extends BaseController
     	$attribute = $this->attributeRepository->createAttribute($params);
 
     	if(!$attribute){
-    		return responseRedirectBack('Error occurred while storing attribute', 'error', true, true);
+    		return $this->responseRedirectBack('Error occurred while storing attribute', 'error', true, true);
     	}
 
-    	return responseRedirect('admin.attributes.index', 'Attribute added successfully', 'success');
+    	return $this->responseRedirect('admin.attributes.index', 'Attribute added successfully', 'success');
     }
 
     /**
@@ -62,5 +62,44 @@ class AttributeController extends BaseController
         $this->setPageTitle('Attribute', 'Edit Attribute');
         $attribute = $this->attributeRepository->findAttributeById($id);
         return view('admin.attributes.edit', compact('attribute'));
+    }
+
+
+    /**
+    * @param Request $request
+    * @return mixed
+    */
+    public function update(Request $request){
+        \Log::info("Req=AttributeController@update called");
+        
+        $this->validate($request,[
+         'code'           =>  'required',
+         'name'           =>  'required',
+         'frontend_type'  =>  'required|not_in:0'
+     ]);
+        
+        $params = $request->except('_token');
+        
+        $updateAttribute = $this->attributeRepository->updateAttribute($params);
+
+        if(!$updateAttribute){
+            return $this->responseRedirectBack('Error occurred while updating attribute', 'error', true, true);
+        }
+
+        return $this->responseRedirect('admin.attributes.index', 'Attribute updated successfully', 'success');
+    }
+
+    /**
+    * @param int $id
+    */
+    public function delete($id){
+        \Log::info("Req=AttributeController@delete called");
+        $deleteAttribute = $this->attributeRepository->deleteAttribute($id);
+        
+        if(!$deleteAttribute){
+            return $this->responseRedirectBack('Error occurred while deleting attribute', 'error', true, true);
+        }
+
+        return $this->responseRedirect('admin.attributes.index', 'Attribute has been deleted successfully', 'success');
     }
 }
