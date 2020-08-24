@@ -15,7 +15,7 @@
 					<a href="#general"data-toggle="tab" class="nav-link active">General</a>
 				</li>
 				<li class="nav-item">
-					<a href="#values" class="nav-link" data-toggle="tab">Attribute Values</a>
+					<a href="#values" data-toggle="tab" class="nav-link">Attribute Values</a>
 				</li>
 			</ul>
 		</div>
@@ -95,7 +95,7 @@
 		</div>
 
 		<div class="tab-pane" id="values">
-			<attribute-values :attributeid="{$attribute->id }}"> </attribute-values>
+			<attribute-values :attributeid="{{ $attribute->id }}"> </attribute-values>
 		</div>
 	</div>
 </div>
