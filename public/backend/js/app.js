@@ -1911,9 +1911,222 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "attribute-values",
-  props: ['attributeid']
+  props: ['attributeid'],
+  data: function data() {
+    return {
+      values: [],
+      value: '',
+      price: '',
+      currentId: '',
+      addValue: true,
+      key: 0
+    };
+  },
+  created: function created() {
+    this.loadValues();
+  },
+  methods: {
+    loadValues: function loadValues() {
+      var attributeId = this.attributeid;
+
+      var _this = this;
+
+      axios.post('/admin/attributes/get-values', {
+        id: attributeId
+      }).then(function (response) {
+        _this.values = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    saveValue: function saveValue() {
+      if (this.value === '') {
+        this.$swal("Error, Value for attribute is required.", {
+          icon: "error"
+        });
+      } else {
+        var attributeId = this.attributeid;
+
+        var _this = this;
+
+        axios.post('/admin/attributes/add-values', {
+          id: attributeId,
+          value: _this.value,
+          price: _this.price
+        }).then(function (response) {
+          _this.values.push(response.data);
+
+          _this.resetValue();
+
+          _this.$swal("Success! Value added successfully!", {
+            icon: "success"
+          });
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    },
+    editAttributeValue: function editAttributeValue(value) {
+      this.addValue = false;
+      this.value = value.value;
+      this.price = value.price;
+      this.currentId = value.id;
+      this.key = this.values.indexOf(value);
+    },
+    updateValue: function updateValue() {
+      if (this.value === '') {
+        this.$swal("Error, Value for attribute is required.", {
+          icon: "error"
+        });
+      } else {
+        var attributeId = this.attributeid;
+
+        var _this = this;
+
+        axios.post('/admin/attributes/update-values', {
+          id: attributeId,
+          value: _this.value,
+          price: _this.price,
+          valueId: _this.currentId
+        }).then(function (response) {
+          _this.values.splice(_this.key, 1);
+
+          _this.resetValue();
+
+          _this.values.push(response.data);
+
+          _this.$swal("Success! Value updated successfully!", {
+            icon: "success"
+          });
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    },
+    deleteAttributeValue: function deleteAttributeValue(value) {
+      var _this2 = this;
+
+      this.$swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this attribute value!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(function (willDelete) {
+        if (willDelete) {
+          _this2.currentId = value.id;
+          _this2.key = _this2.values.indexOf(value);
+          var _this = _this2;
+          axios.post('/admin/attributes/delete-values', {
+            id: _this.currentId
+          }).then(function (response) {
+            if (response.data.status === 'success') {
+              _this.values.splice(_this.key, 1);
+
+              _this.resetValue();
+
+              _this.$swal("Success! Attribute value has been deleted!", {
+                icon: "success"
+              });
+            } else {
+              _this.$swal("Your attribute value not deleted!");
+            }
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else {
+          _this2.$swal("Your option value not deleted!");
+        }
+      });
+    },
+    resetValue: function resetValue() {
+      this.value = '';
+      this.price = '';
+    },
+    reset: function reset() {
+      this.addValue = true;
+      this.resetValue();
+    }
+  }
 });
 
 /***/ }),
@@ -19566,9 +19779,254 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h3", [_vm._v("Option Values ")])
+  return _c("div", { attrs: { id: "" } }, [
+    _c("div", { staticClass: "tile" }, [
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Attribute Values")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile-body" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "value" } },
+            [_vm._v("Value")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              placeholder: "Enter attribute value",
+              id: "value",
+              name: "value"
+            },
+            domProps: { value: _vm.value },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.value = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "price" } },
+            [_vm._v("Price")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.price,
+                expression: "price"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "number",
+              placeholder: "Enter attribute value price",
+              id: "price",
+              name: "price"
+            },
+            domProps: { value: _vm.price },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.price = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile-footer" }, [
+        _c("div", { staticClass: "row d-print-none mt-2" }, [
+          _c("div", { staticClass: "col-12 text-right" }, [
+            _vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        return _vm.saveValue()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v("Save\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        return _vm.updateValue()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v("Update\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.stopPropagation()
+                        return _vm.reset()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v("Reset\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tile" }, [
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Option Values")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile-body" }, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table table-sm" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.values, function(value) {
+                return _c("tr", [
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(_vm._s(value.id))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(_vm._s(value.value))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(_vm._s(value.price))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-primary",
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              return _vm.editAttributeValue(value)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-danger",
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              return _vm.deleteAttributeValue(value)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash" })]
+                      )
+                    ]
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticClass: "text-center" }, [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Value")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
