@@ -16,4 +16,23 @@ class BrandRepository extends BaseRepository implements BrandContract{
 	{
 		return $this->all($columns, $order, $sort);
 	}
+
+	public function createBrand(array $params){
+		try {
+			$collection = collect($params);
+			$logo = null;
+			if($collection->has('logo') && ($params['logo'] instanceof UploadedFile )){
+				$logo = $this->uploadOne($params['logo'], 'brands');
+			}
+
+			$merge = $collection->merge(compact('logo'));
+			$brand = new Brand($merge->all());
+			$brand->save();
+			return $brand;
+
+		} catch (QueryException $e) {
+			throw new InvalidArgumentException($e->getMessage());
+			
+		}
+	}
 }

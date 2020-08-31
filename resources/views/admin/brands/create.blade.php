@@ -16,7 +16,7 @@
 				@csrf
 				<div class="title-body">
 					<div class="form-group">
-						<label for="name" class="control-label">Name <span class="m-l-l5 text-danger">*</span></label>
+						<label for="name" class="control-label">Brand Name <span class="m-l-l5 text-danger">*</span></label>
 						<input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
 
 						@error('name')
@@ -27,12 +27,12 @@
 					</div>
 
 					<div class="from-group">
-						<label for="logo" class="control-label"></label>
+						<label for="logo" class="control-label">Brand Logo</label>
 						<input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo">
 
 						@error('logo')
 						<div class="invalid-feedback">
-							<strong>{{ $messge }} </strong>
+							<strong>{{ $message }} </strong>
 						</div>
 						@enderror
 					</div>
