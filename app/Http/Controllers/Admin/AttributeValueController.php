@@ -21,7 +21,7 @@ class AttributeValueController extends Controller
 	public function getValues(Request $request)
 	{
 		\Log::info("Req=AttributeValueController@getValues called");
-		
+
 		$attributeId = $request->input('id');
 		$attribute = $this->attributeRepository->findAttributeById($attributeId);
 
@@ -31,7 +31,8 @@ class AttributeValueController extends Controller
 	}
 
 	public function addValues(Request $request)
-	{
+	{	
+		\Log::info("Req=AttributeValueController@addValues called");
 		$value = new AttributeValue();
 		$value->attribute_id = $request->input('id');
 		$value->value = $request->input('value');
@@ -43,6 +44,7 @@ class AttributeValueController extends Controller
 
 	public function updateValues(Request $request)
 	{
+		
 		$attributeValue = AttributeValue::findOrFail($request->input('valueId'));
 		$attributeValue->attribute_id = $request->input('id');
 		$attributeValue->value = $request->input('value');

@@ -1940,11 +1940,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['attributeid'],
   data: function data() {
     return {
-      values: []
+      values: [],
+      addValue: true,
+      value: '',
+      price: ''
     };
   },
   created: function created() {
@@ -1960,7 +1994,40 @@ __webpack_require__.r(__webpack_exports__);
         id: attributeId
       }).then(function (res) {
         _this.values = res.data;
+      })["catch"](function (error) {
+        console.log(error);
       });
+    },
+    saveValue: function saveValue() {
+      if (this.value === '') {
+        this.$swal("Error, Value for attribute is required", {
+          icon: "error"
+        });
+      } else {
+        var attributeId = this.attributeid;
+
+        var _this = this;
+
+        axios.post('/admin/attributes/add-values', {
+          id: attributeId,
+          value: _this.value,
+          price: _this.price
+        }).then(function (res) {
+          _this.values.push(res.data);
+
+          _this.resetValue();
+
+          _this.$swal("Success! Value added successfully!", {
+            icon: 'success'
+          });
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    },
+    resetValue: function resetValue() {
+      this.value = '';
+      this.price = '';
     }
   }
 });
@@ -19617,6 +19684,145 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "tile" }, [
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Attribute Values ")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "title-body" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "value" } },
+            [_vm._v("Value")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              placeholder: "Enter attribute value",
+              name: "value"
+            },
+            domProps: { value: _vm.value },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.value = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "control-label", attrs: { for: "price" } },
+            [_vm._v("Price")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.price,
+                expression: "price"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              name: "price",
+              placeholder: "Enter attribue value price"
+            },
+            domProps: { value: _vm.price },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.price = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "title-footer" }, [
+        _c("div", { staticClass: "row d-print-none mt-2" }, [
+          _c("div", { staticClass: "col-12 text-right" }, [
+            _vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.saveValue()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v(" Save\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.updateValue()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v(" Update\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.addValue
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        return _vm.reset()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+                    _vm._v(" Reset\n\t\t\t\t\t")
+                  ]
+                )
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tile" }, [
       _c("h3", { staticClass: "tile-title" }, [_vm._v("Option Values")]),
       _vm._v(" "),
       _c("div", { staticClass: "tile-body" }, [
@@ -19640,7 +19846,22 @@ var render = function() {
                     _vm._v(" " + _vm._s(value.price) + " ")
                   ]),
                   _vm._v(" "),
-                  _vm._m(1, true)
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-primary",
+                        on: {
+                          click: function($event) {
+                            return _vm.editAttributeValue(value)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-edit" })]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
                 ])
               }),
               0
@@ -19672,14 +19893,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "text-center" }, [
-      _c("button", { staticClass: "btn btn-sm btn-primary" }, [
-        _c("i", { staticClass: "fa fa-edit" })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-sm btn-danger" }, [
-        _c("i", { staticClass: "fa fa-trash" })
-      ])
+    return _c("button", { staticClass: "btn btn-sm btn-danger" }, [
+      _c("i", { staticClass: "fa fa-trash" })
     ])
   }
 ]
