@@ -24,6 +24,11 @@ interface AttributeContract{
 	/**
 	* @param array $params
 	*/
-	// public function updateAttribute(array $params);
+	public function updateAttribute(array $params);
+
+	/**
+	* @param int $id
+	*/
+	public function deleteAttribute($id);
 
 }

@@ -18,6 +18,7 @@ class AttributeValueController extends Controller
 
 	public function getValues(Request $request)
 	{
+		
 		$attributeId = $request->input('id');
 		$attribute = $this->attributeRepository->findAttributeById($attributeId);
 
