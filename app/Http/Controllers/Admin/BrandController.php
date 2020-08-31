@@ -22,4 +22,10 @@ class BrandController extends BaseController
 		$brands = $this->brandRepositry->listBrands();
 		return view('admin.brands.index', compact('brands'));
 	}
+
+	public function create(){
+		\Log::info("Req=BaseController@create called");
+		$this->setPageTitle('Brands', 'Create Brand');
+		return view('admin.brands.create');
+	}
 }
