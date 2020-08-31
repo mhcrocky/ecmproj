@@ -13,11 +13,14 @@ class AttributeValueController extends Controller
 
 	public function __construct(AttributeContract $attributeRepository)
 	{
+		\Log::info("Req=AttributeValueController@__construct called");
+
 		$this->attributeRepository = $attributeRepository;
 	}
 
 	public function getValues(Request $request)
 	{
+		\Log::info("Req=AttributeValueController@getValues called");
 		
 		$attributeId = $request->input('id');
 		$attribute = $this->attributeRepository->findAttributeById($attributeId);
