@@ -41,5 +41,9 @@ Route::group(['prefix'  =>  'admin'], function () {
 			Route::post('/delete-values', 'Admin\AttributeValueController@deleteValues');
 		});
 
+
+		Route::group(['prefix' => 'brands'], function(){
+			Route::get('/', 'Admin\BrandController@index')->name('admin.brands.index');
+		});
 	});
 });
