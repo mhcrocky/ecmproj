@@ -44,7 +44,7 @@ class AttributeValueController extends Controller
 
 	public function updateValues(Request $request)
 	{
-		
+		\Log::info("Req=AttributeValueController@updateValues called");
 		$attributeValue = AttributeValue::findOrFail($request->input('valueId'));
 		$attributeValue->attribute_id = $request->input('id');
 		$attributeValue->value = $request->input('value');
