@@ -4,8 +4,13 @@ namespace App\Repositories;
 use App\Repositories\BaseRepository;
 use App\Contracts\BrandContract;
 use App\Models\Brand;
+use App\Traits\UploadAble;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Database\QueryException;
 
 class BrandRepository extends BaseRepository implements BrandContract{
+
+	use UploadAble;
 
 	public function __construct(Brand $model){
 		parent::__construct($model);
@@ -20,7 +25,9 @@ class BrandRepository extends BaseRepository implements BrandContract{
 	public function createBrand(array $params){
 		try {
 			$collection = collect($params);
+			
 			$logo = null;
+
 			if($collection->has('logo') && ($params['logo'] instanceof UploadedFile )){
 				$logo = $this->uploadOne($params['logo'], 'brands');
 			}
