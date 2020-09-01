@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Contracts\AttributeContract;
 use App\Models\Attribute;
 use Illumiate\Database\QueryException;
+use IIluminate\Database\Eloquent\ModelNotFoundException;
 
 Class AttributeRepository extends BaseRepository implements AttributeContract{
 
@@ -57,8 +58,8 @@ Class AttributeRepository extends BaseRepository implements AttributeContract{
 		\Log::info("Req=Repositories\AttributeRepository@findAttributeById called");
 		try{
 			return $this->findOneOrFail($id);
-		}catch(ModelNotFoundExceeption $e){
-			throw new ModelNotFoundExceeption($e);
+		}catch(ModelNotFoundException $e){
+			throw new ModelNotFoundException($e);
 		}
 	}
 

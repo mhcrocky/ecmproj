@@ -36,13 +36,19 @@ class BrandController extends BaseController
 		]);
 
 		$params = $request->except('_token');
-		
 		$brand = $this->brandRepositry->createBrand($params);
-
 		if(!$brand){
 			return $this->responseRedirectBack('Error occured while creating brand', 'error', true, true);
 		}
 
 		return $this->responseRedirect('admin.brands.index', 'Brand added successfully', 'success');
+	}
+
+	public function edit($id){
+		\Log::info("Req=BrandController@edit called");
+		$this->setPageTitle('Brand', 'Edit Brand');
+		$brand = $this->brandRepositry->findBrandById($id);
+
+		return view('admin.brands.edit', compact('brand'));
 	}
 }

@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Traits\UploadAble;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BrandRepository extends BaseRepository implements BrandContract{
 
@@ -40,6 +41,15 @@ class BrandRepository extends BaseRepository implements BrandContract{
 		} catch (QueryException $e) {
 			throw new InvalidArgumentException($e->getMessage());
 			
+		}
+	}
+
+
+	public function findBrandById($id){
+		try {
+			return $this->findOneOrFail($id);
+		} catch (ModelNotFoundException $e) {
+			throw new ModelNotFoundException($e);
 		}
 	}
 }
