@@ -6,4 +6,5 @@ interface BrandContract{
 	public function createBrand(array $params);
 	public function findBrandById(int $id);
 	public function updateBrand(array $params);
+	public function deleteBrand(int $id);
 }

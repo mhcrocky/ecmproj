@@ -62,7 +62,7 @@ class BrandController extends BaseController
 		]);
 
 		$params = $request->except('_token');
-		
+
 		$updateBrand = $this->brandRepositry->updateBrand($params);
 
 		if(!$updateBrand){
@@ -70,6 +70,18 @@ class BrandController extends BaseController
 		}
 
 		return $this->responseRedirect('admin.brands.index', 'Brand has been updated successfully', 'success');
+	}
+
+	public function delete($id){
+		\Log::info("Req=BrandController@delete called");
+		
+		$deleteBrand = $this->brandRepositry->deleteBrand($id);
+
+		if(!$deleteBrand){
+			return $this->responseRedirectBack('Error occured while deleting brand', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.brands.index', 'Brand has been deleted successfully', 'success');
 	}
 }
 

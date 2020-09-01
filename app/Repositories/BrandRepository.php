@@ -69,4 +69,16 @@ class BrandRepository extends BaseRepository implements BrandContract{
 		return $brand;
 
 	}
+
+	public function deleteBrand($id){
+		
+		$brand = $this->findBrandById($id);
+		
+		if($brand->logo != null){
+			$this->deleteOne($brand->logo);
+		}
+		$brand->delete();
+
+		return $brand;
+	}
 }
