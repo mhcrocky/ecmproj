@@ -34,4 +34,8 @@ class AttributeValue extends Model
 	public function attribute(){
 		return $this->belongsTo(Attribute::class);
 	}
+
+	public function productAttributes(){
+		return $this->belongsToMany(ProductAttribute::class);
+	}
 }
