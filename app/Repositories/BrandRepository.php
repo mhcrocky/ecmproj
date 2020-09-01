@@ -52,4 +52,21 @@ class BrandRepository extends BaseRepository implements BrandContract{
 			throw new ModelNotFoundException($e);
 		}
 	}
+
+	public function updateBrand($params){
+
+		$brand = $this->findBrandById($params['id']);
+		$collection = collect($params)->except('_token');
+
+		if($collection->has('logo') && ($params['logo'] instanceof UploadedFile)){
+			if($brand->logo != null){
+				$this->deleteOne($brand->logo);
+			}
+			$logo = $this->uploadOne($params['logo'], 'brands');
+		}
+		$merge = $collection->merge(compact('logo'));
+		$brand->update($merge->all());
+		return $brand;
+
+	}
 }

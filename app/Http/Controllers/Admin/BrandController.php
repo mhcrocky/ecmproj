@@ -51,4 +51,26 @@ class BrandController extends BaseController
 
 		return view('admin.brands.edit', compact('brand'));
 	}
+
+
+	public function update(Request $request){
+		\Log::info("Req=BrandController@update called");
+		
+		$this->validate($request,[
+			'name' => 'required|max:250',
+			'logo' => 'mimes:jpeg,jpg,png:max:1000',
+		]);
+
+		$params = $request->except('_token');
+		
+		$updateBrand = $this->brandRepositry->updateBrand($params);
+
+		if(!$updateBrand){
+			return $this->responseRedirectBack('Error occured while updating brand', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.brands.index', 'Brand has been updated successfully', 'success');
+	}
 }
+
+
