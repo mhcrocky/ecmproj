@@ -10,4 +10,12 @@ interface ProductContract{
 	* @return mixed
 	*/
 	public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']);
+
+	/**
+	* @param array $params
+	* @return mixed
+	*/
+	public function createProduct(array $params);
+
+	
 }
