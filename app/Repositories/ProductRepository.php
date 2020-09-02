@@ -1,7 +1,11 @@
 <?php
 namespace App\Repositories;
 
-class ProductRepository extends BaseRepository implements ProductContact{
+use App\Contracts\ProductContract;
+use App\Models\Product;
+
+
+class ProductRepository extends BaseRepository implements ProductContract{
 
 	
 	public function __construct(Product $model){
