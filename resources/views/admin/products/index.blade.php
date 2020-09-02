@@ -16,10 +16,10 @@
 							<th> # </th>
 							<th> SKU </th>
 							<th> Name </th>
-							<th> Brand </th>
-							<th> Categories </th>
-							<th> Price </th>
-							<th> Status </th>
+							<th class="text-center"> Brand </th>
+							<th class="text-center"> Categories </th>
+							<th class="text-center"> Price </th>
+							<th class="text-center"> Status </th>
 							<th style="width: 100px; min-width: 100px;" class="text-center text-danger">
 								<i class="fa fa-bolt"></i>
 							</th>
@@ -39,12 +39,12 @@
 								@endforeach
 							</td>
 							<td> {{ $product->price }}</td>
-							<td> 
+							<td class="text-center"> 
 								<span class="badge badge-{{ $product->status == 1 ? 'success' : 'danger' }}">
 									{{ $product->status == 1 ? 'Active' : 'Not Active' }}
 								</span>
 							</td>
-							<td> 
+							<td class="text-center"> 
 								<div class="btn-group">
 									<a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a> 
 									<a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>

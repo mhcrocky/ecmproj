@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Contracts\ProductContract;
 use App\Contracts\BrandContract;
+use App\Contracts\CategoryContract;
 
 class ProductController extends BaseController
 {
@@ -20,13 +21,19 @@ class ProductController extends BaseController
 	protected $brandRepository;
 
 	/**
+	* @var $categoryRepository
+	*/
+	protected $categoryRepository;
+
+	/**
 	* ProductController Construct
 	* @param ProductContract $productRepository
 	*/
-	public function __construct(ProductContract $productRepository, BrandContract $brandRepository){
+	public function __construct(ProductContract $productRepository, BrandContract $brandRepository, CategoryContract $categoryRepository){
 		\Log::info("Req=ProductController@__construct called");
 		$this->productRepository = $productRepository;
 		$this->brandRepository = $brandRepository;
+		$this->categoryRepository = $categoryRepository;
 	}
 
 	/**
@@ -46,7 +53,25 @@ class ProductController extends BaseController
 		\Log::info("Req=ProductController@create called");
 		$this->setPageTitle('Product', 'Create Product');
 		$brands = $this->brandRepository->listBrands();
-		$catgories = [];
-		return view('admin.products.form', compact('brands'));
+		$categories = $this->categoryRepository->listCategories();
+		return view('admin.products.form', compact('brands', 'categories'));
+	}
+
+
+	/**
+	* @param Request $reqest
+	*/
+	public function store(Request $request){
+		\Log::info("Req=ProductController@store called");
+
+		$this->validate($request,[
+			'name'			=> 'required|max:255',
+			'sku'			=> 'required',
+			'brand_id'		=> 'required|not_in:0',
+			'price'			=> 'required|regex:/^d+(\.\d{1,2})?$/',
+			'special_price'	=> 'regex:/^d+(\.\d{1,2})?$/',
+			'quantity'		=>	'required|numeric'
+
+		]);
 	}
 }
