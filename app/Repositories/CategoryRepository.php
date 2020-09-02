@@ -32,7 +32,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	*/
 	public function listCategories(string $order = 'id', string $sort ='desc', array $columns = ['*']){
 		\Log::info("Req=CategoryRepository@listCategories Called");
-		return $this->all($columns, $order, $sort);}
+		return $this->all($columns, $order, $sort);
+	}
 
 	/**
 	* @param int $id
