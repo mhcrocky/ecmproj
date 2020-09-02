@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<div class="tile">
 			<div class="title-body">
-				<table class="table table-hover table-bordered" id="simpleTable">
+				<table class="table table-hover table-bordered" id="sampleTable">
 					<thead>
 						<tr>
 							<th> # </th>
@@ -63,6 +63,6 @@
 @endsection
 @push('scripts')
 <script type="text/javascript" src="{{ asset('backend/js/plugins/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('backend/js/plugins/dataTables.bootstrap.min.js') }}"></script> 
-<script type="text/javascript">$('#simpleTable').dataTable(); </script>
+<script type="text/javascript" src="{{ asset('backend/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+<script type="text/javascript">$('#sampleTable').dataTable();</script>
 @endpush
