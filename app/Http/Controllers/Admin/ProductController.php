@@ -73,5 +73,7 @@ class ProductController extends BaseController
 			'quantity'		=>	'required|numeric'
 
 		]);
+
+		dd($request);
 	}
 }
