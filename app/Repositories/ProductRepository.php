@@ -32,7 +32,11 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	* @return products|mixed
 	*/
 	public function createProduct(array $params){
-
+		try {
+			
+		} catch (QueryException $e) {
+			throw new QueryException($e->getMessage());
+		}
 	}
 
 
