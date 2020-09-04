@@ -74,6 +74,14 @@ class ProductController extends BaseController
 
 		]);
 
-		dd($request);
+		$params = $request->except('_token');
+
+		$createProduct = $this->productRepository->createProduct($params);
+
+		if(!$createProduct){
+			return $this->responseRedirectBack('Error occured while creating product', 'error', true, true);		}
+		}
+
+		return $this->responseBack('admin.products.index', 'Product added successfully.', 'success');
 	}
 }
