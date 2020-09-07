@@ -47,7 +47,7 @@ class ProductRepository extends BaseRepository implements ProductContract{
 
 
 			if($colleciton->has('categories')){
-				$product->categories()->syns($params['categories']);
+				$product->categories()->sync($params['categories']);
 			}
 
 			return $product;
