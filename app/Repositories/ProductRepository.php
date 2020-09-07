@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Contracts\ProductContract;
 use App\Models\Product;
 use Illuminate\Database\QueryException;
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 class ProductRepository extends BaseRepository implements ProductContract{
 
@@ -43,14 +44,16 @@ class ProductRepository extends BaseRepository implements ProductContract{
 
 			$product = new Product($merge->all());
 			$product->save();
-			
 
-			$categories = $products->
 
-			dd($colleciton);
+			if($colleciton->has('categories')){
+				$product->categories()->syns($params['categories']);
+			}
+
+			return $product;
 			
 		} catch (QueryException $e) {
-			throw new QueryException($e->getMessage());
+			throw new InvalidArgumentException($e->getMessage());
 		}
 	}
 
