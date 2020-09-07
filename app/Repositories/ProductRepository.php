@@ -27,6 +27,7 @@ class ProductRepository extends BaseRepository implements ProductContract{
 		return $this->all($columns, $order, $sort);	
 	}
 
+	
 	/**
 	* @param array $params
 	* @return products|mixed
@@ -36,6 +37,17 @@ class ProductRepository extends BaseRepository implements ProductContract{
 			
 			$colleciton = collect($params);
 
+			$status = $colleciton->has('status') ? 1 : 0;
+			$featured = $colleciton->has('featured') ? 1 : 0;
+			$merge = $colleciton->merge(compact('status', 'featured'));
+
+			$product = new Product($merge->all());
+			$product->save();
+			
+
+			$categories = $products->
+
+			dd($colleciton);
 			
 		} catch (QueryException $e) {
 			throw new QueryException($e->getMessage());

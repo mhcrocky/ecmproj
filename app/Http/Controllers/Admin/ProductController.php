@@ -68,8 +68,8 @@ class ProductController extends BaseController
 			'name'			=> 'required|max:255',
 			'sku'			=> 'required',
 			'brand_id'		=> 'required|not_in:0',
-			'price'			=> 'required|regex:/^d+(\.\d{1,2})?$/',
-			'special_price'	=> 'regex:/^d+(\.\d{1,2})?$/',
+			'price'			=> 'regex:/^\d+(\.\d{1,2})?$/|required',
+			'special_price'	=> 'regex:/^\d+(\.\d{1,2})?$/',
 			'quantity'		=>	'required|numeric'
 
 		]);
@@ -79,7 +79,7 @@ class ProductController extends BaseController
 		$createProduct = $this->productRepository->createProduct($params);
 
 		if(!$createProduct){
-			return $this->responseRedirectBack('Error occured while creating product', 'error', true, true);		}
+			return $this->responseRedirectBack('Error occured while creating product', 'error', true, true);		
 		}
 
 		return $this->responseBack('admin.products.index', 'Product added successfully.', 'success');

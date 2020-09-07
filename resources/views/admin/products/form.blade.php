@@ -67,7 +67,7 @@
 										<select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror ">
 											<option value="0">Select a brand </option>
 											@foreach($brands as $brand)
-											<option value="{{ $brand->id }}"> {{ $brand->name }}</option>
+											<option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }} > {{ $brand->name }}</option>
 											@endforeach
 										</select>
 
@@ -125,7 +125,7 @@
 										<div class="form-group">
 											<label for="quantity" class="control-label">Quantity</label>
 											<input type="text" 
-											name="qunatity"
+											name="quantity"
 											placeholder="Enter product quntity"
 											value="{{ old('quantity') }}" 
 											class="form-control @error('quantity') is-invalid @enderror">
@@ -154,15 +154,15 @@
 								</div> <!-- \end row -->
 								<div class="form-group">
 									<label for="description" class="control-label">Description</label>
-									<textarea name="description" id="description" rows="8" class="form-control"></textarea>
+									<textarea name="description" id="description" rows="8" class="form-control"> {{ old('description') }} </textarea>
 								</div>
 
 								<div class="form-group">
 									<div class="form-check">
 										<label for="" class="form-check-label">
-											<input type="checkbox" 
+											<input 
+											type="checkbox" 
 											name="status"
-											value="{{ old('status') }}" 
 											class="form-check-input"
 											>Status
 										</label>
@@ -171,9 +171,9 @@
 								<div class="form-group">
 									<div class="form-check">
 										<label for="featured" class="form-check-label">
-											<input type="checkbox" 
+											<input 
+											type="checkbox" 
 											name="featured"
-											value="{{ old('featured') }}" 
 											class="form-check-input"
 											>Featured
 										</label>
