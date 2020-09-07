@@ -34,6 +34,9 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	public function createProduct(array $params){
 		try {
 			
+			$colleciton = collect($params);
+
+			
 		} catch (QueryException $e) {
 			throw new QueryException($e->getMessage());
 		}
