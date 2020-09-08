@@ -84,4 +84,16 @@ class ProductController extends BaseController
 
 		return $this->responseRedirect('admin.products.index', 'Product added successfully.', 'success');
 	}
+
+
+	public function delete($id){
+		\Log::info("Req=ProductController@delete called");
+		$deleteProduct = $this->productRepository->deleteProduct($id);
+
+		if(!$deleteProduct){
+			return $this->responseRedirectBack('Error occured while deleting product', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.products.index', 'Product has been deleted successfully', 'success');
+	}
 }
