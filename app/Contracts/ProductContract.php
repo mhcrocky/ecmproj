@@ -21,5 +21,11 @@ interface ProductContract{
 	 * @param int $id
 	 */
 	public function deleteProduct(int $id);
+
+	/**
+	 * @param array $params
+	 * @return mixed
+	 */
+	public function updateProduct(array $params);
 	
 }

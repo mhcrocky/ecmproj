@@ -42,6 +42,7 @@
 								value="{{ old('name', isset($product) ? $product->name : '' ) }}" 
 								class="form-control @error('name') is-invalid @enderror" >
 
+								<input type="hidden" name="id" value="{{ isset($product) ? $product->id : '' }}">
 								<div class="invalid-feedback active">
 									<i class="fa fa-exclamation-circle fa-fw"></i> 
 									@error('name') <span>{{ $message }}</span> @enderror

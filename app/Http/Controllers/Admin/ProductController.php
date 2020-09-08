@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Contracts\ProductContract;
 use App\Contracts\BrandContract;
 use App\Contracts\CategoryContract;
-
+use App\Http\Requests\ProductFormValidate;
 class ProductController extends BaseController
 {
 	/**
@@ -61,18 +61,18 @@ class ProductController extends BaseController
 	/**
 	* @param Request $reqest
 	*/
-	public function store(Request $request){
+	public function store(ProductFormValidate $request){
 		\Log::info("Req=ProductController@store called");
 
-		$this->validate($request,[
-			'name'			=> 'required|max:255',
-			'sku'			=> 'required',
-			'brand_id'		=> 'required|not_in:0',
-			'price'			=> 'regex:/^\d+(\.\d{1,2})?$/|required',
-			'special_price'	=> 'regex:/^\d+(\.\d{1,2})?$/',
-			'quantity'		=>	'required|numeric'
+		// $this->validate($request,[
+		// 	'name'			=> 'required|max:255',
+		// 	'sku'			=> 'required',
+		// 	'brand_id'		=> 'required|not_in:0',
+		// 	'price'			=> 'regex:/^\d+(\.\d{1,2})?$/|required',
+		// 	'special_price'	=> 'regex:/^\d+(\.\d{1,2})?$/',
+		// 	'quantity'		=>	'required|numeric'
 
-		]);
+		// ]);
 
 		$params = $request->except('_token');
 
@@ -109,7 +109,7 @@ class ProductController extends BaseController
 	 */
 	public function update(ProductFormValidate $request){
 		
-		$params = $request->excepts('_token');
+		$params = $request->except('_token');
 		$updateProduct = $this->productRepository->updateProduct($params);
 
 		if(!$updateProduct){

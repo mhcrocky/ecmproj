@@ -70,6 +70,29 @@ class ProductRepository extends BaseRepository implements ProductContract{
 			throw new ModelNotFoundException($e);
 		}
 	}
+
+
+	/**
+	 * @param array $params
+	 * @return mixed
+	 */
+	public function updateProduct($params){
+		$product = $this->findProductById($params['id']);
+
+		$colleciton = collect($params)->except('_token');
+
+		$status = $colleciton->has('status') ? 1 : 0;
+		$featured = $colleciton->has('featured') ? 1 : 0;
+
+		$merge = $colleciton->merge(compact('status', 'featured'));
+		$product->update($merge->all());
+
+		if($colleciton->has('categories')){
+			$product->categories()->sync($params['categories']);
+		}
+
+		return $product;
+	}
 	/**
 	 * @param int id
 	 */
