@@ -17,5 +17,9 @@ interface ProductContract{
 	*/
 	public function createProduct(array $params);
 
+	/**
+	 * @param int $id
+	 */
+	public function deleteProduct(int $id);
 	
 }

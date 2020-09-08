@@ -86,6 +86,26 @@ class ProductController extends BaseController
 	}
 
 
+	/**
+	 * @param int $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function edit($id){
+		\Log::info("Req=ProductController@edit called");
+		$this->setPageTitle('Product', 'Edit Product');
+
+		$product = $this->productRepository->findOneOrFail($id);
+
+		$brands = $this->brandRepository->listBrands();
+
+		$categories = $this->categoryRepository->listCategories();
+		
+		return view('admin.products.form', compact('product','brands', 'categories'));
+	}
+	/**
+	 * @param int $id
+	 * @return mixed
+	 */
 	public function delete($id){
 		\Log::info("Req=ProductController@delete called");
 		$deleteProduct = $this->productRepository->deleteProduct($id);

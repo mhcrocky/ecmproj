@@ -13,9 +13,14 @@
 				<li class="nav-item"> 
 					<a class="nav-link active" href="#general" data-toggle="tab">General</a>
 				</li>
+				@if($product->exists())
 				<li class="nav-item"> 
-					<a class="nav-link" href="#test" data-toggle="tab">Test </a>
+					<a class="nav-link" href="#images" data-toggle="tab">Images </a>
 				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" href="#attributes" data-toggle="tab">Attributes </a>
+				</li>
+				@endif
 			</ul>
 		</div>
 	</div>
@@ -196,10 +201,16 @@
 						</form>
 					</div>
 				</div>
-				<!-- Second Tab -->
-				<div class="tab-pane" id="test">
+				<!-- Image Tab -->
+				<div class="tab-pane" id="images">
 					<div class="tile">
-						<h3> Fro testing </h3>
+						<h3> For Image </h3>
+					</div>
+				</div>
+				<!-- Attribute Tab -->
+				<div class="tab-pane" id="attributes">
+					<div class="tile">
+						<h3> For Attribute </h3>
 					</div>
 				</div>
 			</div>

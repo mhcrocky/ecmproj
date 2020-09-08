@@ -74,6 +74,18 @@ class BaseRepository implements BaseContract
 		\Log::info("Req=Repositories/BaseRepository@findBy called");
 		return $this->model->where($data)->all();
 	}
+
+	/**
+	* @param array $data
+	* @return mixed
+	*/
+	public function findOneBy(array $data){
+		\Log::info("Req=Repositories/BaseRepository@findOneBy called");
+		return $this->model->where($data)->first();
+	}
+
+
+	
 	/**
 	* @param int $id
 	* @return mixed
@@ -83,15 +95,7 @@ class BaseRepository implements BaseContract
 		return $this->model->findOrFail($id);
 	}
 
-	/**
-	* @param array $data
-	* @return mixed
-	*/
-	public function findOneBy(array $data){
-		\Log::info("Req=Repositories/BaseRepository@findOneBy called");
-		return $this->model->where($data)->all();
-	}
-
+	
 	/**
 	* @param array $data
 	* @return mixed

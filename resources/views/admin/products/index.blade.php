@@ -46,8 +46,8 @@
 							</td>
 							<td class="text-center"> 
 								<div class="btn-group">
-									<a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a> 
-									<a href="{{ route('admin.products.delete') }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+									<a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a> 
+									<a href="{{ route('admin.products.delete', $product->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 								</div>
 
 

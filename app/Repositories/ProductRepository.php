@@ -5,6 +5,7 @@ use App\Contracts\ProductContract;
 use App\Models\Product;
 use Illuminate\Database\QueryException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductRepository extends BaseRepository implements ProductContract{
 
@@ -57,6 +58,27 @@ class ProductRepository extends BaseRepository implements ProductContract{
 		}
 	}
 
+	/**
+	 * @param int $id
+	 * @return mixed
+	 * @throws ModelNotFoundException
+	 */
+	public function findProductById($id){
+		try{
+			return $this->findOneOrFail($id);
+		}catch(ModelNotFoundException $e){
+			throw new ModelNotFoundException($e);
+		}
+	}
+	/**
+	 * @param int id
+	 */
+	public function deleteProduct($id){
+		 $product = $this->findProductById($id);
+		 dd($product);
+		 $product->delete();
+		 return $product;
+	}
 
 
 	
