@@ -13,7 +13,7 @@
 				<li class="nav-item"> 
 					<a class="nav-link active" href="#general" data-toggle="tab">General</a>
 				</li>
-				@if($product->exists())
+				@if(isset($product))
 				<li class="nav-item"> 
 					<a class="nav-link" href="#images" data-toggle="tab">Images </a>
 				</li>
@@ -28,7 +28,7 @@
 		<div class="tab-content">
 			<div class="tab-pane active" id="general">
 				<div class="tile">
-					<form action="{{ $product->exists() ? route('admin.products.update') : route('admin.products.store') }}" method="POST">
+					<form action="{{ isset($product) ? route('admin.products.update') : route('admin.products.store') }}" method="POST">
 						@csrf
 						<h3 class="tile-title"> Product Information </h3>
 						<hr>
@@ -39,7 +39,7 @@
 								type="text" 
 								name="name" 
 								placeholder="Enter product name"
-								value="{{ old('name', $product->name ) }}" 
+								value="{{ old('name', isset($product) ? $product->name : '' ) }}" 
 								class="form-control @error('name') is-invalid @enderror" >
 
 								<div class="invalid-feedback active">
@@ -56,7 +56,7 @@
 										type="text" 
 										name="sku" 
 										placeholder="Enter product sku" 
-										value="{{ old('sku', $product->sku ) }}"
+										value="{{ old('sku', isset($product) ? $product->sku : '') }}"
 										class="form-control @error('sku') is-invalid @enderror">
 
 										<div class="invalid-feedback active">
@@ -72,7 +72,7 @@
 										<select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror ">
 											<option value="0">Select a brand </option>
 											@foreach($brands as $brand)
-											<option value="{{ $brand->id }}" {{ old('brand_id', $product->brand_id) == $brand->id ? 'selected' : '' }} > {{ $brand->name }}</option>
+											<option value="{{ $brand->id }}" {{ old('brand_id', isset($product) ? $product->brand_id : '') == $brand->id ? 'selected' : ''  }} > {{ $brand->name }}</option>
 											@endforeach
 										</select>
 
@@ -89,7 +89,12 @@
 											<label for="categories" class="control-label">Categories</label>	
 											<select name="categories[]" id="categories" class="form-control" multiple="">
 												@foreach($categories as $category)
-												<option value="{{ $category->id }}" {{ old('categories[]', in_array($category->id, $product->categories->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $category->name }}</option>
+												<option value="{{ $category->id }}" 
+												{{ old('categories[]', 
+												isset($product) ? 
+													(in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : '') 
+													: '') 
+												}}>{{ $category->name }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -103,7 +108,7 @@
 											<input 
 											type="text"  
 											name="price" 
-											value="{{ old('price', $product->price) }}"
+											value="{{ old('price', isset($product) ? $product->price : '') }}"
 											placeholder="Enter Price" 
 											class="form-control @error('price') is-invalid @enderror" >
 
@@ -119,7 +124,7 @@
 											<input type="text" 
 											name="special_price" 
 											placeholder="Enter Special Price" 
-											value="{{old('special_price', $product->special_price)}}" 
+											value="{{old('special_price', isset($product) ? $product->special_price : '' )}}" 
 											class="form-control @error('special_price') is-invalid @enderror">
 										</div>
 									</div>
@@ -132,7 +137,7 @@
 											<input type="text" 
 											name="quantity"
 											placeholder="Enter product quntity"
-											value="{{ old('quantity', $product->quantity) }}" 
+											value="{{ old('quantity', isset($product) ? $product->quantity : '') }}" 
 											class="form-control @error('quantity') is-invalid @enderror">
 
 											<div class="invalid-feedback active">
@@ -147,7 +152,7 @@
 											<input type="text" 
 											name="weight"
 											placeholder="Enter product weight" 
-											value="{{ old('weight', $product->weight) }}"
+											value="{{ old('weight', isset($product) ? $product->weight : '') }}"
 											class="form-control @error('weight') is-invalid @enderror">
 
 											<div class="invalid-feedback active">
@@ -159,7 +164,7 @@
 								</div> <!-- \end row -->
 								<div class="form-group">
 									<label for="description" class="control-label">Description</label>
-									<textarea name="description" id="description" rows="8" class="form-control"> {{ old('description', $product->description) }} </textarea>
+									<textarea name="description" id="description" rows="8" class="form-control"> {{ old('description', isset($product) ? $product->description : '') }} </textarea>
 								</div>
 
 								<div class="form-group">
@@ -169,7 +174,7 @@
 											type="checkbox" 
 											name="status"
 											class="form-check-input"
-											{{ $product->status ==1 ? 'checked' : ''}}
+											{{ isset($product) ? ($product->status == 1 ? 'checked' : '') : ''}}
 											>Status
 										</label>
 									</div>
@@ -181,7 +186,7 @@
 											type="checkbox" 
 											name="featured"
 											class="form-check-input"
-											{{ $product->featured ==1 ? 'checked' : ''}}
+											{{ isset($product) ? ($product->featured == 1 ? 'checked' : '') : ''}}
 											>Featured
 										</label>
 									</div>
@@ -192,7 +197,7 @@
 									<div class="col-12 text-right">
 										<button class="btn btn-success" type="submit">
 											<i class="fa fa-fw fa-lg fa-check-circle"></i>
-											{{ $product->exists() ? 'Update Product' : 'Save Product' }}
+											{{ isset($product) ? 'Update Product' : 'Save Product' }}
 										</button>
 										<a href="{{ route('admin.products.index') }}" class="btn btn-danger">
 											<i class="fa fa-fw fa-lg fa-arrow-left"></i> Go Back

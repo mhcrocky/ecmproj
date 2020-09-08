@@ -102,6 +102,25 @@ class ProductController extends BaseController
 		
 		return view('admin.products.form', compact('product','brands', 'categories'));
 	}
+
+	/**
+	 * @param Request $request
+	 * @return mixed
+	 */
+	public function update(ProductFormValidate $request){
+		
+		$params = $request->excepts('_token');
+		$updateProduct = $this->productRepository->updateProduct($params);
+
+		if(!$updateProduct){
+			return $this->responseRedirectBack('Error occurred while updating product', 'error', true, true);
+		}
+
+		return $this->responseRedirect('admin.products.index', 'Product has been updated successfully', 'success');
+
+	}
+
+
 	/**
 	 * @param int $id
 	 * @return mixed
