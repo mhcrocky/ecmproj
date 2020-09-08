@@ -82,6 +82,6 @@ class ProductController extends BaseController
 			return $this->responseRedirectBack('Error occured while creating product', 'error', true, true);		
 		}
 
-		return $this->responseBack('admin.products.index', 'Product added successfully.', 'success');
+		return $this->responseRedirect('admin.products.index', 'Product added successfully.', 'success');
 	}
 }

@@ -43,6 +43,6 @@ class Product extends Model
 
 	public function categories(){
 		// $product->categories()->sync(array(1,2,3));
-		return $this->belongsToMany(Category::class, 'product_categories', 'category_id', 'product_id');
+		return $this->belongsToMany(Category::class, 'product_categories', 'product_id','category_id');
 	}
 }
