@@ -223,7 +223,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<form action="" class="dropzone" id="dropzone" style="border: 2px dashed rgba(0,0,0,0.3)">
-										<input type="hidden" name="product_id" value="{{ $product->id}}">
+										<input type="hidden" name="product_id" value="{{ isset($product) ? $product->id : ''}}">
 										{{ csrf_field() }}
 									</form>
 								</div>
@@ -237,7 +237,7 @@
 								</div>
 							</div>
 
-							@if($product->images)
+							@if(isset($product) && $product->images)
 							<hr>
 							<div class="row">
 								@foreach($product->images as $image)
@@ -259,7 +259,7 @@
 				</div>
 				<!-- Attribute Tab -->
 				<div class="tab-pane" id="attributes">
-					<!-- <product-attributes :productid="{{ $product->id }}"></product-attributes> -->
+					<!-- <product-attributes :productid="{{ isset($product) ? $product->id : '' }}"></product-attributes> -->
 				</div>
 			</div>
 		</div>
@@ -306,7 +306,7 @@
 
 
 		function showNotification(title, message, type, icon){
-			
+
 			$.notify({
 				title: title + ' : ',
 				message: message,
