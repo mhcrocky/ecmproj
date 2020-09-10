@@ -10,7 +10,7 @@ class Product extends Model
 	protected $table = 'products';
 
 	protected $fillable = [
-		'brand_id', 'sku', 'name', 'slug', 'description', 'quantity', 'weight', 'price', 'sale_price', 'status', 'featured',
+		'brand_id', 'sku', 'name', 'slug', 'description', 'quantity', 'weight', 'price', 'special_price', 'status', 'featured',
 	];
 
 	protected $casts = [
