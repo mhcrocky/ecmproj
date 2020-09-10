@@ -1,5 +1,10 @@
 @extends('admin.app')
 @section('title') {{ $pageTitle }} @endsection
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('backend/dropzone-5.7.0/dist/min/dropzone.min.css') }}" type="text/css">
+@endsection
+
 @section('content')
 <div class="app-title">
 	<h1><i class="fa fa-shopping-bag"></i> {{ $pageTitle }} </h1>
@@ -91,8 +96,8 @@
 											<select name="categories[]" id="categories" class="form-control" multiple="">
 												@foreach($categories as $category)
 												<option value="{{ $category->id }}" 
-												{{ old('categories[]', 
-												isset($product) ? 
+													{{ old('categories[]', 
+													isset($product) ? 
 													(in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : '') 
 													: '') 
 												}}>{{ $category->name }}</option>
@@ -212,7 +217,44 @@
 				<!-- Image Tab -->
 				<div class="tab-pane" id="images">
 					<div class="tile">
-						<h3> For Image </h3>
+						<h3 class="tile-title">Upload Image</h3>
+						<hr>
+						<div class="tile-body">
+							<div class="row">
+								<div class="col-md-12">
+									<form action="" class="dropzone" id="dropzone" style="border: 2px dashed rgba(0,0,0,0.3)">
+										<input type="hidden" name="product_id" value="{{ $product->id}}">
+										@csrf
+									</form>
+								</div>
+							</div>
+
+							<div class="row d-print-none mt-2">
+								<div class="col-12 text-right">
+									<button class="btn btn-success" id="uploadButton">
+										<i class="fa fa-fw fa-lg fa-upload"></i>Upload Images
+									</button>
+								</div>
+							</div>
+
+							@if($product->images)
+							<hr>
+							<div class="row">
+								@foreach($product->images as $image)
+								<div class="col-md-3">
+									<div class="card">
+										<div class="card-body">
+											<img src="{{ asset('storage/'>$image->full) }}" alt="image" id="brandLogo" class="img-fluid">
+											<a href="{{ route('admin.products.images.delete', $image->id) }}" class="card-link float-right text-danger">
+												<i class="fa fa-fw fa-lg fa-trash"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								@endforeach
+							</div>
+							@endif
+						</div>
 					</div>
 				</div>
 				<!-- Attribute Tab -->
@@ -226,3 +268,9 @@
 	</div>
 
 	@endsection
+	@push('scripts')
+	<script type="text/javascript" src="{{ asset('backend/js/plugins/select2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('backend/dropzone-5.7.0/dist/min/dropzone.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('backend/js/plugins/bootstrap-notify.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('backend/js/app.js') }}"></script>
+	@endpush
