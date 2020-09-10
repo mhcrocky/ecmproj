@@ -1,0 +1,34 @@
+<template>
+	<div>
+		<div class="tile">
+			<h3 class="tile-title">Product Attributes</h3>
+			<div class="title-body">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr class="text-center">
+								<th>Value</th>
+								<th>Qty</th>
+								<th>Price</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-center">A</td>
+								<td class="text-center">A</td>
+								<td class="text-center">A</td>
+								<td class="text-center">A</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+	export default{
+		
+	}
+</script>
