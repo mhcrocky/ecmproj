@@ -8,8 +8,12 @@ use App\Contracts\ProductContract;
 use App\Contracts\BrandContract;
 use App\Contracts\CategoryContract;
 use App\Http\Requests\ProductFormValidate;
+use App\Traits\UploadAble;
+use App\Models\ProductImage;
+
 class ProductController extends BaseController
 {
+	use UploadAble;
 	/**
 	* @var $productRepository;
 	*/
@@ -134,5 +138,43 @@ class ProductController extends BaseController
 		}
 
 		return $this->responseRedirect('admin.products.index', 'Product has been deleted successfully', 'success');
+	}
+
+
+	/**
+	* product image upload
+	* @param Request $request
+	*/
+	public function uploadImage(Request $request){
+		\Log::info("Req=ProductController@uploadImage called");
+
+		$product = $this->productRepository->findOneOrFail($request->product_id);
+
+		if($request->has('image')){
+			
+			$image = $this->uploadOne($request->image, 'products');
+
+			$productImage = new ProductImage([
+				'full'	=> $image,
+			]);
+
+			$product->images()->save($productImage);
+
+		}
+
+		return response()->json(['status' => 'success']);
+	}
+
+
+	public function deleteImage($id){
+		$image = ProductImage::findOrFail($id);
+
+		if($image->full != ''){
+			$this->deleteOne($image->full);
+		}
+
+		$image->delete();
+
+		return redirect()->back();
 	}
 }
