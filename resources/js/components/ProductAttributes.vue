@@ -29,6 +29,28 @@
 </template>
 <script>
 	export default{
-		
+		name:  "product-attributes",
+		props: ['productid'],
+		data() {
+			return {
+				productAttributes: [],
+			}
+		},
+		created: function(){
+			this.loadProductAttributes(this.productid);
+		},
+		methods: {
+			loadProductAttributes(id){
+				let _this = this;
+				axios.post('/admin/products/attributes', {
+					id: id
+				}).then (function(res){
+					_this.productAttributes = res.data;
+				}).catch(function(err){
+					console.log(err);
+				});
+			}
+		}
+
 	}
 </script>

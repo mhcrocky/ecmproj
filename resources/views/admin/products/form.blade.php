@@ -259,7 +259,7 @@
 				</div>
 				<!-- Attribute Tab -->
 				<div class="tab-pane" id="attributes">
-					<!-- <product-attributes :productid="{{ isset($product) ? $product->id : '' }}"></product-attributes> -->
+					<product-attributes :productid="{{ isset($product) ? $product->id : '' }}"></product-attributes>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,8 @@ window._ = require('lodash');
  window.Vue = require('vue');
  
  Vue.component('attribute-values', require('./components/AttributeValues.vue').default);
-Vue.component('product-attributes', require('./components/ProductAtrributes.vue').default);
+Vue.component('product-attributes', require('./components/ProductAttributes.vue').default);
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
