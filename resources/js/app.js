@@ -9,7 +9,7 @@ window._ = require('lodash');
  window.Vue = require('vue');
  
  Vue.component('attribute-values', require('./components/AttributeValues.vue').default);
-Vue.component('product-attributes', require('./components/ProductAttributes.vue').default);
+ Vue.component('product-attributes', require('./components/ProductAttributes.vue').default);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -29,11 +29,11 @@ Vue.component('product-attributes', require('./components/ProductAttributes.vue'
  
  let token = document.head.querySelector('meta[name="csrf-token"]');
 
-if (token) {
-	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+ if (token) {
+ 	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+ } else {
+ 	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+ }
 
 /**
  * The following block of code may be used to automatically register your
