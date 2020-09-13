@@ -2170,6 +2170,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "product-attributes",
   props: ['productid'],
@@ -20115,48 +20119,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "tile" }, [
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Product Attributes")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "title-body" }, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table table-sm" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.productAttributes, function(pa) {
+                return _c("tr", [
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(" A" + _vm._s(pa.value))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(_vm._s(pa.quantity))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "25%" }
+                    },
+                    [_vm._v(_vm._s(pa.price))]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1, true)
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "tile" }, [
-        _c("h3", { staticClass: "tile-title" }, [_vm._v("Product Attributes")]),
+    return _c("thead", [
+      _c("tr", { staticClass: "text-center" }, [
+        _c("th", [_vm._v("Value")]),
         _vm._v(" "),
-        _c("div", { staticClass: "title-body" }, [
-          _c("div", { staticClass: "table-responsive" }, [
-            _c("table", { staticClass: "table table-sm" }, [
-              _c("thead", [
-                _c("tr", { staticClass: "text-center" }, [
-                  _c("th", [_vm._v("Value")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Qty")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Price")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Action")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", { staticClass: "text-center" }, [_vm._v("A")]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [_vm._v("A")]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [_vm._v("A")]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [_vm._v("A")])
-                ])
-              ])
-            ])
-          ])
-        ])
+        _c("th", [_vm._v("Qty")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "text-center", staticStyle: { width: "25%" } },
+      [
+        _c("button", { staticClass: "btn btn-sm btn-danger" }, [
+          _c("i", { staticClass: "fa fa-trash" })
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

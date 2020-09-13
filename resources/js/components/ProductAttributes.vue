@@ -14,11 +14,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="text-center">A</td>
-								<td class="text-center">A</td>
-								<td class="text-center">A</td>
-								<td class="text-center">A</td>
+							<tr v-for="pa in productAttributes">
+								<td style="width:25%;" class="text-center"> A{{ pa.value }}</td>
+								<td style="width:25%;" class="text-center">{{ pa.quantity }}</td>
+								<td style="width:25%;" class="text-center">{{ pa.price }}</td>
+								<td style="width:25%;" class="text-center">
+									<button class="btn btn-sm btn-danger">
+										<i class="fa fa-trash"></i>
+									</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
