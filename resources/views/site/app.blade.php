@@ -11,6 +11,5 @@
     @yield('content')
     @include('site.partials.footer')
     @include('site.partials.scripts')
-    @stack
 </body>
 </html>
