@@ -1,5 +1,6 @@
 @extends('site.app')
-@section('title') Page Title @endsection
+@section('title', 'Homepage')
+
 @section('content')
-<h1>786, This is the fronted page </h1>
-@endsection
+<h2>Homepage</h2>
+@stop
