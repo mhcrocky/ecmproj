@@ -45,7 +45,8 @@ class CategoryController extends BaseController
 	*/
 	public function create(){
 		\Log::info("Req=CategoryController@create called");
-		$categories = $this->categoryRepository->listCategories('id', 'asc');
+		// $categories = $this->categoryRepository->listCategories('id', 'asc');
+		$categories = $this->categoryRepository->treeList();
 		$this->setPageTitle('Categories', 'Create Category');
 		return view('admin.categories.create', compact('categories'));
 	}
@@ -81,8 +82,8 @@ class CategoryController extends BaseController
 	public function edit($id){
 		\Log::info("Req=CategoryController@edit called");
 		$targetCategory = $this->categoryRepository->findCategoryById($id);
-		$categories = $this->categoryRepository->listCategories();
-
+		// $categories = $this->categoryRepository->listCategories();
+		$categories = $this->categoryRepository->treeList();
 		$this->setPageTitle('Categories', 'Edit Category : '. $targetCategory->name);
 		return view('admin.categories.edit', compact('targetCategory', 'categories'));
 	}

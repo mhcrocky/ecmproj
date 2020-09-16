@@ -4,13 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use TypiCMS\NestableTrait;
 
 class Category extends Model
 {
+
+	use NestableTrait;
+
 	protected $table = 'categories';
+
 	protected $fillable = [
 		'name', 'slug', 'description','parent_id','featured','menu','image'
 	];
+	
 	protected $casts = [
 		'parent_id'		=>	'integer',
 		'featured'		=>	'boolean',
