@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// dd(app());
+
 Route::view('/', 'site.pages.homepage');
 Auth::routes();
 
 require 'admin.php';
+
+Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
+
 

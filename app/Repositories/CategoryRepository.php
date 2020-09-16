@@ -132,4 +132,14 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 		->listsFlattened('name'); // other plugins
 	}
 
+	/**
+	* @param $slug
+	* @return mixed
+	*/
+	public function findBySlug($slug){
+		return Category::with('products')
+		->where('slug', $slug)
+		->where('menu', 1)
+		->first();
+	}
 }
