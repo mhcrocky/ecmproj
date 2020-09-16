@@ -93,16 +93,28 @@ class ProductRepository extends BaseRepository implements ProductContract{
 
 		return $product;
 	}
+	
 	/**
 	 * @param int id
 	 */
 	public function deleteProduct($id){
-		 $product = $this->findProductById($id);
-		 dd($product);
-		 $product->delete();
-		 return $product;
+		$product = $this->findProductById($id);
+		dd($product);
+		$product->delete();
+		return $product;
 	}
 
+	/**
+	* @param $slug
+	* @return mixed
+	*/
+	public function findProductBySlug($slug){
+
+		$product = Product::where('slug', $slug)->first();
+
+		return $product;
+
+	}
 
 	
 }

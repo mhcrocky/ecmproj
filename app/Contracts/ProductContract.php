@@ -27,5 +27,11 @@ interface ProductContract{
 	 * @return mixed
 	 */
 	public function updateProduct(array $params);
+
+	/**
+	* @param $slug
+	* @return mixed
+	*/
+	public function findProductBySlug($slug);
 	
 }

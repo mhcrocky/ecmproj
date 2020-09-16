@@ -34,7 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Log::info("Req=RepositoryServiceProvider@register Called");
+        \Log::info("Req=Providers/RepositoryServiceProvider@register Called");
 
         foreach ($this->repositories as $interface => $implementation) {
             $this->app->bind($interface, $implementation);
