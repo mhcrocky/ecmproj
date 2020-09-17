@@ -25,7 +25,7 @@ class ProductController extends Controller{
 		return view('site.pages.product', compact('product', 'attributes'));
 	}
 
-	public function addToCart(Request $reqeust){
+	public function addToCart(Request $request){
 		$product = $this->productRepository->findProductById($request->input('productId'));
 		$options = $request->except('_token', 'productId', 'price', 'qty');
 
