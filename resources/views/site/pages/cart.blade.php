@@ -1,7 +1,7 @@
 @extends('site.app')
 @section('title', 'Shopping Cart')
 @section('content')
-<section class="section-pagetop bd-dark">
+<section class="section-pagetop bg-dark">
 	<div class="container clearfix">
 		<h2 class="title-page">Cart</h2>
 	</div>
@@ -84,7 +84,7 @@
 				</figure>
 				<figure class="itemside mb-3">
 					<aside class="aside">
-						<img src="{{ asset('fronted/images/icons/pay-mastercard.png" alt="">
+						<img src="{{ asset('frontend/images/icons/pay-mastercard.png') }}" alt="">
 					</aside>
 
 					<div class="text-wrap small text-muted">
@@ -93,7 +93,7 @@
 					</div>
 
 				</figure>
-				<a href="" class="btn btn-sucess btn-lg btn-block"> Proceed To Checkout</a>
+				<a href="" class="btn btn-success btn-lg btn-block"> Proceed To Checkout</a>
 			</aside>
 		</div>
 	</div>
