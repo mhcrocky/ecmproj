@@ -29,7 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string('country');
             $table->string('post_code');
             $table->string('phone_number');
-            $table->text('note');
+            $table->text('notes');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
