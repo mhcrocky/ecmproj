@@ -19,7 +19,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @param Category $model
 	*/
 	public function __construct(Category $model){
-		\Log::info("Req=CategoryRepository@__construct called");
+		\Log::info("Req=Repositories/CategoryRepository@__construct called");
 		Parent::__construct($model);
 		$this->model = $model;
 	}
@@ -31,7 +31,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @return mixed
 	*/
 	public function listCategories(string $order = 'id', string $sort ='desc', array $columns = ['*']){
-		\Log::info("Req=CategoryRepository@listCategories Called");
+		\Log::info("Req=Repositories/CategoryRepository@listCategories Called");
 		return $this->all($columns, $order, $sort);
 	}
 
@@ -41,7 +41,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @throws ModelNotFoundException
 	*/
 	public function findCategoryById(int $id){
-		\Log::info("Req=CategoryRepository@findCategoryById Called");
+		\Log::info("Req=Repositories/CategoryRepository@findCategoryById Called");
 		try{
 			return $this->findOneOrFail($id);
 		}catch (ModelNotFoundException $e){
@@ -54,7 +54,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @return Category|mixed
 	*/
 	public function createCategory(array $params){
-		\Log::info("Req=CategoryRepository@createCategory Called");
+		\Log::info("Req=Repositories/CategoryRepository@createCategory Called");
 		try{
 			$collection = collect($params);
 			$image = null;
@@ -81,7 +81,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @return mixed
 	*/
 	public function updateCategory(array $params){
-		\Log::info("Req=CategoryRepository@updateCategory Called");
+		\Log::info("Req=Repositories/CategoryRepository@updateCategory Called");
 		$category = $this->findCategoryById($params['id']);
 
 		$collection = collect($params)->except('_token');
@@ -108,9 +108,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	*/
 	public function deleteCategory($id){
 		\Log::info("Req=CategoryRepository@deleteCategory Called");
-
 		$category = $this->findCategoryById($id);
-
 		if($category->name != null){
 			$this->deleteOne($category->image);
 		}
@@ -124,8 +122,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	/**
 	* @return mixed
 	*/
-
 	public function treeList(){
+		\Log::info("Req=Repositories/CategoryRepository@treeList Called");
 		return Category::orderByRaw('-name ASC')
 		->get()
 		->nest()
@@ -137,6 +135,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract{
 	* @return mixed
 	*/
 	public function findBySlug($slug){
+		\Log::info("Req=Repositories/CategoryRepository@findBySlug Called");
 		return Category::with('products')
 		->where('slug', $slug)
 		->where('menu', 1)
