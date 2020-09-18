@@ -14,6 +14,7 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	* @param Product $model
 	*/
 	public function __construct(Product $model){
+		\Log::info("Req=ProductRepository@__construct called");
 		parent::__construct($model);
 		$this->model = $model;
 	}
@@ -26,6 +27,7 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	* @return mixed
 	*/
 	public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']){
+		\Log::info("Req=ProductRepository@listProducts called");
 		return $this->all($columns, $order, $sort);	
 	}
 
@@ -35,10 +37,10 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	* @return products|mixed
 	*/
 	public function createProduct(array $params){
-		try {
-			
-			$colleciton = collect($params);
+		\Log::info("Req=ProductRepository@createProduct called");
 
+		try {
+			$colleciton = collect($params);
 			$status = $colleciton->has('status') ? 1 : 0;
 			$featured = $colleciton->has('featured') ? 1 : 0;
 			$merge = $colleciton->merge(compact('status', 'featured'));
@@ -64,6 +66,8 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	 * @throws ModelNotFoundException
 	 */
 	public function findProductById($id){
+		\Log::info("Req=ProductRepository@findProductById called");
+
 		try{
 			return $this->findOneOrFail($id);
 		}catch(ModelNotFoundException $e){
@@ -77,8 +81,9 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	 * @return mixed
 	 */
 	public function updateProduct($params){
-		$product = $this->findProductById($params['id']);
+		\Log::info("Req=ProductRepository@updateProduct called");
 
+		$product = $this->findProductById($params['id']);
 		$colleciton = collect($params)->except('_token');
 
 		$status = $colleciton->has('status') ? 1 : 0;
@@ -98,6 +103,8 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	 * @param int id
 	 */
 	public function deleteProduct($id){
+		\Log::info("Req=ProductRepository@deleteProduct called");
+
 		$product = $this->findProductById($id);
 		dd($product);
 		$product->delete();
@@ -109,7 +116,7 @@ class ProductRepository extends BaseRepository implements ProductContract{
 	* @return mixed
 	*/
 	public function findProductBySlug($slug){
-
+		\Log::info("Req=ProductRepository@findProductBySlug called");
 		$product = Product::where('slug', $slug)->first();
 
 		return $product;
