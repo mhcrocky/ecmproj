@@ -14,16 +14,20 @@ class BrandRepository extends BaseRepository implements BrandContract{
 	use UploadAble;
 
 	public function __construct(Brand $model){
+		\Log::info("Req=Repositories/BrandRepository@__construct called");
 		parent::__construct($model);
 		$this->model = $model;
 	}
 
-	public function listBrands(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
-	{
+	public function listBrands(string $order = 'id', string $sort = 'desc', array $columns = ['*']) {
+		\Log::info("Req=Repositories/BrandRepository@listBrands called");
+
 		return $this->all($columns, $order, $sort);
 	}
 
 	public function createBrand(array $params){
+		\Log::info("Req=Repositories/BrandRepository@createBrand called");
+
 		try {
 			$collection = collect($params);
 			
@@ -46,6 +50,8 @@ class BrandRepository extends BaseRepository implements BrandContract{
 
 
 	public function findBrandById($id){
+		\Log::info("Req=Repositories/BrandRepository@findBrandById called");
+
 		try {
 			return $this->findOneOrFail($id);
 		} catch (ModelNotFoundException $e) {
@@ -54,7 +60,7 @@ class BrandRepository extends BaseRepository implements BrandContract{
 	}
 
 	public function updateBrand($params){
-
+		\Log::info("Req=Repositories/BrandRepository@updateBrand called");
 		$brand = $this->findBrandById($params['id']);
 		$collection = collect($params)->except('_token');
 
@@ -71,9 +77,8 @@ class BrandRepository extends BaseRepository implements BrandContract{
 	}
 
 	public function deleteBrand($id){
-		
+		\Log::info("Req=Repositories/BrandRepository@deleteBrand called");
 		$brand = $this->findBrandById($id);
-		
 		if($brand->logo != null){
 			$this->deleteOne($brand->logo);
 		}
