@@ -10,12 +10,13 @@ use Cart;
 class OrderRepository extends BaseRepository implements OrderContract{
 
 	public function __construct(Order $model){
+		\Log::info("Req=Repositories/OrderRepository@findBySlug Called");
 		parent::__construct($model);
 		$this->model = $model;
 	}
 
 	public function storeOrderDetails($params){
-
+		\Log::info("Req=Repositories/OrderRepository@storeOrderDetails Called");
 		$order = Order::create([
 			'order_number' 		=>	'ORD-'.strtoupper(uniqid()),
 			'user_id'			=>	Auth()->user()->id,
