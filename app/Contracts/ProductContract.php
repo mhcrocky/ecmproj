@@ -13,7 +13,6 @@ interface ProductContract{
 
 	/**
 	* @param array $params
-	* @return mixed
 	*/
 	public function createProduct(array $params);
 
@@ -24,7 +23,6 @@ interface ProductContract{
 
 	/**
 	 * @param array $params
-	 * @return mixed
 	 */
 	public function updateProduct(array $params);
 
