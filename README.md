@@ -50,8 +50,10 @@ comming soon.
 
 - Laravel 7+, PHP 7+.
 - JavaScript & VueJS Framework.
-- Bootstrap eCommerce UI Kit
-- Vali Admin 
+- Bootstrap eCommerce UI Kit for frontend design
+- Vali Admin for backend design
+- MySQL for local
+- PgSQL for heroku deploy
 
 ## Further Development
 
