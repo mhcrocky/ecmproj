@@ -22,22 +22,18 @@ interface CategoryContract{
 
 	/**
 	* @param array $params
-	* @return mixed
 	*/
 	public function createCategory(array $params);
 
 	/**
 	* @param array $params
-	* @return mixed
 	*/
 	public function updateCategory(array $params);
 	
 	/**
 	* @param int $id
-	* @return mixed
 	*/
 	public function deleteCategory($id);
-
 
 	/**
 	* @return mixed
