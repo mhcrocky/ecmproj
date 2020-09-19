@@ -8,10 +8,12 @@ use Cart;
 class CartController extends Controller{
 
 	public function getCart(){
+		\Log::info("Req=CartController@getCart called");
 		return view('site.pages.cart');
 	}
 
 	public function removeItem($id){
+		\Log::info("Req=CartController@removeItem called");
 		Cart::remove($id);
 		if(Cart::isEmpty()){
 			return redirect('/');
@@ -20,6 +22,7 @@ class CartController extends Controller{
 	}
 
 	public function clearCart(){
+		\Log::info("Req=CartController@clearCart called");
 		Cart::clear();
 		return redirect('/');
 	}
