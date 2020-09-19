@@ -14,6 +14,7 @@ class ProductController extends Controller{
 	protected $attributeRepository;
 
 	public function __construct(ProductContract $productRepository, AttributeContract $attributeRepository){
+		\Log::info("Req=ProductController@__construct called");
 		$this->productRepository = $productRepository;
 		$this->attributeRepository = $attributeRepository;
 	}
@@ -26,6 +27,7 @@ class ProductController extends Controller{
 	}
 
 	public function addToCart(Request $request){
+		\Log::info("Req=ProductController@addToCart called");
 		$product = $this->productRepository->findProductById($request->input('productId'));
 		$options = $request->except('_token', 'productId', 'price', 'qty');
 
