@@ -10,7 +10,6 @@ interface BaseContract{
 	*/
 	public function create(array $attribute);
 
-
 	/**
 	* Update a model instance
 	* @param array $attributes
@@ -18,7 +17,6 @@ interface BaseContract{
 	* @return  mixed
 	*/
 	public function update(array $attributes, int $id);
-
 
 	/**
 	* Return all models rows
@@ -29,14 +27,12 @@ interface BaseContract{
 	*/
 	public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
 
-
 	/**
 	* Find one by id
 	* @param int id
 	* @return mixed
 	*/
 	public function find(int $id);
-
 
 	/**
 	* FindOne by id or Failed
@@ -45,14 +41,12 @@ interface BaseContract{
 	*/
 	public function findOneOrFail(int $id);
 
-
 	/** 
 	* Find based on different columns
 	* @param array data
 	* @return mixed
 	*/
 	public function findBy(array $data);
-
 
 	/**
 	* Find one based on a different column or through exception
