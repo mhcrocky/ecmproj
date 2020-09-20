@@ -6,10 +6,21 @@ use App\Models\Category;
 use Faker\Generator as Faker;
 
 $factory->define(Category::class, function (Faker $faker) {
-    return [
-        'name'			=>	$faker->name,
-        'description'	=>	$faker->realText(100),
-        'parent_id'		=>	1,
-        'menu'			=>	1,
-    ];
+
+	$categories = [
+
+		'Branded Foods', 'Households', 'Veggies & Fruits', 'Kitchen', 'Brand & Bakery'
+	];
+	foreach($categories as $category){
+
+		return [
+			'name'			=>	trim(strtolower($category)),
+			'description'	=>	$faker->realText(100),
+			'parent_id'		=>	1,
+			'menu'			=>	1,
+		];
+
+		$this->comment->info('Inserted'. count($categories). 'records');
+	}
+	
 });
