@@ -9,19 +9,28 @@ class CategoriesTableSeeder extends Seeder
 
 
     protected $data = [
-        'Colthing'  =>  ["woman Shoes", 'Mens\'s Shirt'],
-        'Handy'     =>  ['Smartphones', 'Smartwatches']
+        'Pizza'         =>  ["Cheesy Bites Pizza", 'Pizza Barcelona', 'Pizza Salami', 'Roll Pizza', 'Mushroom chicken pizza'],
+        'Burger'        =>  ['Chicken Burger', 'Maxican Burger', 'Maxican club Burger', 'Maxican Little Burger'],
+        'Chicken'       =>  ['Chicken Sausage', 'Chicken Nuggets', 'Spicy Chicken', 'Crispy Chicken', 'Chicken Breast'],
+        'Cake'          =>  ['Cherry Cake', 'Red Velvet Cake','White Forest Cake', 'Vanilla Cake', 'Black Forest Cake'],
+        'Drink'         =>  ['Chocolate Milk', 'Gold Coffee', 'Green mango Cooler', 'Lemon  Shake', 'Stawbarry Shake']
+
     ];
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
 
         foreach($this->data as $cat => $subCats){
-            $id = Category::create(['name' => $cat])->id;
+            $id = Category::create([
+                'name'      => $cat,
+                'parent_id' => null
+            ])->id;
+
+            $this->command->info(date('Y-m-d H:i:s'). ": Category Name = ".$cat." created");
 
             foreach ($subCats as $subCat) {
 
@@ -31,10 +40,15 @@ class CategoriesTableSeeder extends Seeder
                     'description'   =>  $faker->realText(100),
                     'menu'          =>  1,
                 ]);
+
+                $this->command->info(date('Y-m-d H:i:s'). ": Sub Category = ".$subCat." created");
+
             }
 
         }
-        $this->command->info('Inserted '. count($this->data).' records');
+
+        
+        // $this->command->info('Inserted Sub Category '. count($subCats).' records');
         // Category::create([
         // 	'name'			=>	'Root',
         // 	'description'	=>	'This is the root category, don\'t delete this one',
