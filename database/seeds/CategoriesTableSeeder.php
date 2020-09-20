@@ -8,14 +8,14 @@ class CategoriesTableSeeder extends Seeder
 {
 
 
-    protected $data = [
-        'Pizza'         =>  ["Cheesy Bites Pizza", 'Pizza Barcelona', 'Pizza Salami', 'Roll Pizza', 'Mushroom chicken pizza'],
-        'Burger'        =>  ['Chicken Burger', 'Maxican Burger', 'Maxican club Burger', 'Maxican Little Burger'],
-        'Chicken'       =>  ['Chicken Sausage', 'Chicken Nuggets', 'Spicy Chicken', 'Crispy Chicken', 'Chicken Breast'],
-        'Cake'          =>  ['Cherry Cake', 'Red Velvet Cake','White Forest Cake', 'Vanilla Cake', 'Black Forest Cake'],
-        'Drink'         =>  ['Chocolate Milk', 'Gold Coffee', 'Green mango Cooler', 'Lemon  Shake', 'Stawbarry Shake']
+	protected $data = [
+		'Pizza'         =>  ["Cheesy Bites Pizza", 'Pizza Barcelona', 'Pizza Salami', 'Roll Pizza', 'Mushroom chicken pizza'],
+		'Burger'        =>  ['Chicken Burger', 'Maxican Burger', 'Maxican club Burger', 'Maxican Little Burger'],
+		'Chicken'       =>  ['Chicken Sausage', 'Chicken Nuggets', 'Spicy Chicken', 'Crispy Chicken', 'Chicken Breast'],
+		'Cake'          =>  ['Cherry Cake', 'Red Velvet Cake','White Forest Cake', 'Vanilla Cake', 'Black Forest Cake'],
+		'Drink'         =>  ['Chocolate Milk', 'Gold Coffee', 'Green mango Cooler', 'Lemon  Shake', 'Stawbarry Shake']
 
-    ];
+	];
     /**
      * Run the database seeds.
      *
@@ -24,30 +24,38 @@ class CategoriesTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        foreach($this->data as $cat => $subCats){
-            $id = Category::create([
-                'name'      => $cat,
-                'parent_id' => null
-            ])->id;
 
-            $this->command->info(date('Y-m-d H:i:s'). ": Category Name = ".$cat." created");
+    	Category::create([
+    		'name'          =>  'Root',
+    		'description'   =>  'This is the root category, don\'t delete this one',
+    		'parent_id'     =>  null,
+    		'menu'          =>  0,
+    	]);
 
-            foreach ($subCats as $subCat) {
+    	foreach($this->data as $cat => $subCats){
+    		$id = Category::create([
+    			'name'      => $cat,
+    			'parent_id' => 1
+    		])->id;
 
-                Category::create([
-                    'name'          =>  $subCat,
-                    'parent_id'     =>  $id,
-                    'description'   =>  $faker->realText(100),
-                    'menu'          =>  1,
-                ]);
+    		$this->command->info(date('Y-m-d H:i:s'). ": Category Name = ".$cat." created");
 
-                $this->command->info(date('Y-m-d H:i:s'). ": Sub Category = ".$subCat." created");
+    		foreach ($subCats as $subCat) {
 
-            }
+    			Category::create([
+    				'name'          =>  $subCat,
+    				'parent_id'     =>  $id,
+    				'description'   =>  $faker->realText(100),
+    				'menu'          =>  1,
+    			]);
 
-        }
+    			$this->command->info(date('Y-m-d H:i:s'). ": Sub Category = ".$subCat." created");
 
-        
+    		}
+
+    	}
+
+
         // $this->command->info('Inserted Sub Category '. count($subCats).' records');
         // Category::create([
         // 	'name'			=>	'Root',
