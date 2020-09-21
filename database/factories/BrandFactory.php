@@ -12,6 +12,6 @@ $factory->define(Brand::class, function (Faker $faker) {
     	// 	'name' 	=>	$faker->randomElement($brands),
     	// ]);
 	return [
-		'name' => $faker->randomElement($brands)
+		'name' => $faker->unique()->randomElement($brands)
 	];
 });
