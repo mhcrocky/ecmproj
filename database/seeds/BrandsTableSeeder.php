@@ -12,11 +12,7 @@ class BrandsTableSeeder extends Seeder
      */
     public function run() {
 
-    	// $faker = Faker::create();
-
     	factory(Brand::class, 5)->create();
-        // factory(Task::class, 1000)->create();
-
 
     }
 }
