@@ -55,15 +55,6 @@ class CategoriesTableSeeder extends Seeder
 
     	}
 
-
-        // $this->command->info('Inserted Sub Category '. count($subCats).' records');
-        // Category::create([
-        // 	'name'			=>	'Root',
-        // 	'description'	=>	'This is the root category, don\'t delete this one',
-        // 	'parent_id'		=>	null,
-        // 	'menu'			=>	0,
-        // ]);
-
         // factory('App\Models\Category')->create();
 
     }
