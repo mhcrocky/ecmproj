@@ -20,7 +20,7 @@ $factory->define(Category::class, function (Faker $faker) {
 			'menu'			=>	1,
 		];
 
-		$this->comment->info('Inserted'. count($categories). 'records');
+		$this->command->info('Inserted'. count($categories). 'records');
 	}
 	
 });
