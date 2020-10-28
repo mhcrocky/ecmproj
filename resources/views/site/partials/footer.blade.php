@@ -61,7 +61,7 @@
 		</section>
 		<section class="footer-bottom row border-top-white">
 			<div class="col-sm-6">
-				<p class="text-white-50"> Made with <3 
+				<p class="text-white-50"> Made wtih PHP Laravel 7+
 					<br> by Md. Moshiur Rahman
 				</p>
 			</div>
