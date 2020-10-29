@@ -1,7 +1,7 @@
 @extends('site.app')
 @section('title', 'Register')
 @section('content')
-<section class="section-pagetop bg-dark">
+<section class="section-pagetop bg-info">
     <div class="container clearfix">
         <h2 class="title-page">Register</h2>
     </div>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block"> Sign Up </button>
+                            <button type="submit" class="btn btn-success btn-block bg-info"> Sign Up </button>
                         </div>
                         <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
                     </form>
