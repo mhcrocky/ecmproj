@@ -8,6 +8,7 @@
 </head>
 <body>
 	@include('site.partials.header')
+	@include('site.partials.nav')
 	@yield('content')
 	@include('site.partials.footer')
 	@include('site.partials.scripts')
