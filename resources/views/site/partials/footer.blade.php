@@ -53,20 +53,23 @@
 				</aside>
 			</div> <!-- row.// -->
 		</section>	<!-- footer-top.// -->
-
+<hr>
 		<section class="footer-bottom row">
-			<div class="col-md-2">
-				<p class="text-muted"> © 2019 Company name </p>
+			<div class="col-md-6">
+				<p class="text-muted"> Copyright &copy; {{ date('Y')}} <a href="https://vorsurm.herokuapp.com" traget="_blank"> vorsurm</a> - All Rights Reserved. </p>
 			</div>
-			<div class="col-md-8 text-md-center">
-				<span class="px-2">info@pixsellz.io</span>
+			<!-- <div class="col-md-2 text-md-center">
+				<span class="px-2">demo content</span>
 				<span class="px-2">+879-332-9375</span>
 				<span class="px-2">Street name 123, Avanue abc</span>
-			</div>
-			<div class="col-md-2 text-md-right text-muted">
+			</div> -->
+			<div class="col-md-6 text-md-right text-muted">
+				<span class="px-2">We accept:</span>
 				<i class="fab fa-lg fa-cc-visa"></i>
 				<i class="fab fa-lg fa-cc-paypal"></i>
 				<i class="fab fa-lg fa-cc-mastercard"></i>
+				<i class="fab fa-lg fa-cc-discover"></i>
+				<i class="fab fa-lg fa-cc-amex"></i>
 			</div>
 		</section>
 	</div><!-- //container -->

@@ -8,7 +8,7 @@
 	<div class="container">
 
 		<div class="intro-banner-wrap">
-			<img src="{{ asset('frontend')}}/images/banners/1.jpg" class="img-fluid rounded">
+			<img src="https://via.placeholder.com/1200x300" class="img-fluid rounded">
 		</div>
 
 	</div> <!-- container //-->
@@ -74,7 +74,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend') }}/images/items/1.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Just another product name</a>
 
@@ -95,7 +95,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend') }}/images/items/2.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Some item name here</a>
 
@@ -116,7 +116,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend') }}/images/items/3.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Great product name here</a>
 
@@ -137,7 +137,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend') }}/images/items/5.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Just another product name</a>
 
@@ -176,7 +176,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend')}}/images/items/5.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Just another product name</a>
 
@@ -197,7 +197,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend')}}/images/items/6.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Some item name here</a>
 
@@ -218,7 +218,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="{{ asset('frontend')}}/images/items/7.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Great product name here</a>
 
@@ -238,18 +238,30 @@
 				</div>
 			</div> <!-- col.// -->
 			
-	<div class="col-md-3">
-		<div href="#" class="card card-product-grid">
-			<a href="#" class="img-wrap"> <img src="{{ asset('frontend')}}/images/items/4.jpg"> </a>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">Just another product name</a>
-				<div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-</div> <!-- row.// -->
+			<div class="col-md-3">
+				<div href="#" class="card card-product-grid">
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
+					<figcaption class="info-wrap">
+						<a href="#" class="title">Great product name here</a>
 
-</div> <!-- container .//  -->
+						<div class="rating-wrap">
+							<ul class="rating-stars">
+								<li style="width:80%" class="stars-active"> 
+									<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+								</li>
+								<li>
+									<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 
+								</li>
+							</ul>
+							<span class="label-rating text-muted"> 34 reviws</span>
+						</div>
+						<div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
+					</figcaption>
+				</div>
+			</div> <!-- col.// -->
+		</div> <!-- row.// -->
+
+	</div> <!-- container .//  -->
 </section>
 <!--========== New-arrived-section end// ==========-->
 
@@ -267,7 +279,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="images/items/1.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Just another product name</a>
 						<div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
@@ -276,7 +288,7 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="images/items/2.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Some item name here</a>
 						<div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
@@ -285,16 +297,16 @@
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="images/items/3.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
-						<a href="#" class="title">Great product name here</a>
+						<a href="#" class="title">Products Name</a>
 						<div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
 					</figcaption>
 				</div>
 			</div> <!-- col.// -->
 			<div class="col-md-3">
 				<div href="#" class="card card-product-grid">
-					<a href="#" class="img-wrap"> <img src="images/items/4.jpg"> </a>
+					<a href="#" class="img-wrap"> <img src="https://via.placeholder.com/370x300"> </a>
 					<figcaption class="info-wrap">
 						<a href="#" class="title">Just another product name</a>
 						<div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
@@ -318,37 +330,37 @@
 		<div class="row">
 			<div class="col-md-2 col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo1.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">36 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->
 			<div class="col-md-2  col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo2.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">980 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->
 			<div class="col-md-2  col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo3.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">25 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->
 			<div class="col-md-2  col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo4.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">72 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->
 			<div class="col-md-2  col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo5.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">41 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->
 			<div class="col-md-2  col-6">
 				<figure class="box item-logo">
-					<a href="#"><img src="images/logos/logo2.png"></a>
+					<a href="#"><img src="https://via.placeholder.com/130x65"></a>
 					<figcaption class="border-top pt-2">12 Products</figcaption>
 				</figure> <!-- item-logo.// -->
 			</div> <!-- col.// -->

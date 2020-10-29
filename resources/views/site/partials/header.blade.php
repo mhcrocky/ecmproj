@@ -1,4 +1,4 @@
-<!--==========Section-header start//==========-->
+<!--========== Section-header start ==========-->
 <header class="section-header">
 
 	<nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
@@ -51,7 +51,7 @@
 						</div>
 						<div class="widget-header icontext">
 							<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
-							<div class="text">
+							<div class="text ml-2">
 								<span class="text-muted">Welcome!</span>
 								@guest
 								<div> 
