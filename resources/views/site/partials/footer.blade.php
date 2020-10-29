@@ -1,77 +1,75 @@
-<footer class="section-footer bg-dark white">
+ <!-- ========================= FOOTER =========================  -->
+
+ <footer class="section-footer border-top bg">
 	<div class="container">
-		<section class="footer-top padding-top">
+		<section class="footer-top  padding-y">
 			<div class="row">
-				<aside class="col-sm-3 col-md-3 white">
-					<h5 class="title">Customer Services</h5>
+				<aside class="col-md col-6">
+					<h6 class="title">Brands</h6>
 					<ul class="list-unstyled">
-						<li> <a href="#">Help center</a></li>
+						<li> <a href="#">Adidas</a></li>
+						<li> <a href="#">Puma</a></li>
+						<li> <a href="#">Reebok</a></li>
+						<li> <a href="#">Nike</a></li>
+					</ul>
+				</aside>
+				<aside class="col-md col-6">
+					<h6 class="title">Company</h6>
+					<ul class="list-unstyled">
+						<li> <a href="#">About us</a></li>
+						<li> <a href="#">Career</a></li>
+						<li> <a href="#">Find a store</a></li>
+						<li> <a href="#">Rules and terms</a></li>
+						<li> <a href="#">Sitemap</a></li>
+					</ul>
+				</aside>
+				<aside class="col-md col-6">
+					<h6 class="title">Help</h6>
+					<ul class="list-unstyled">
+						<li> <a href="#">Contact us</a></li>
 						<li> <a href="#">Money refund</a></li>
-						<li> <a href="#">Terms and Policy</a></li>
+						<li> <a href="#">Order status</a></li>
+						<li> <a href="#">Shipping info</a></li>
 						<li> <a href="#">Open dispute</a></li>
 					</ul>
 				</aside>
-				<aside class="col-sm-3  col-md-3 white">
-					<h5 class="title">My Account</h5>
+				<aside class="col-md col-6">
+					<h6 class="title">Account</h6>
 					<ul class="list-unstyled">
 						<li> <a href="#"> User Login </a></li>
 						<li> <a href="#"> User register </a></li>
 						<li> <a href="#"> Account Setting </a></li>
 						<li> <a href="#"> My Orders </a></li>
-						<li> <a href="#"> My Wishlist </a></li>
 					</ul>
 				</aside>
-				<aside class="col-sm-3  col-md-3 white">
-					<h5 class="title">About</h5>
+				<aside class="col-md">
+					<h6 class="title">Social</h6>
 					<ul class="list-unstyled">
-						<li> <a href="#"> Our history </a></li>
-						<li> <a href="#"> How to buy </a></li>
-						<li> <a href="#"> Delivery and payment </a></li>
-						<li> <a href="#"> Advertice </a></li>
-						<li> <a href="#"> Partnership </a></li>
+						<li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
+						<li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
+						<li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
+						<li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
 					</ul>
 				</aside>
-				<aside class="col-sm-3">
-					<article class="white">
-						<h5 class="title">Contacts</h5>
-						<p>
-							<strong>Phone: </strong> +123456789
-							<br>
-							<strong>Fax:</strong> +123456789
-						</p>
+			</div> <!-- row.// -->
+		</section>	<!-- footer-top.// -->
 
-						<div class="btn-group white">
-							<a class="btn btn-facebook" title="Facebook" target="_blank" href="#"><i
-								class="fab fa-facebook-f  fa-fw"></i>
-							</a>
-							<a class="btn btn-instagram" title="Instagram" target="_blank" href="#"><i
-								class="fab fa-instagram  fa-fw"></i>
-							</a>
-							<a class="btn btn-youtube" title="Youtube" target="_blank" href="#"><i
-								class="fab fa-youtube  fa-fw"></i>
-							</a>
-							<a class="btn btn-twitter" title="Twitter" target="_blank" href="#"><i
-								class="fab fa-twitter  fa-fw"></i>
-							</a>
-						</div>
-					</article>
-				</aside>
+		<section class="footer-bottom row">
+			<div class="col-md-2">
+				<p class="text-muted"> © 2019 Company name </p>
 			</div>
-			<br>
-		</section>
-		<section class="footer-bottom row border-top-white">
-			<div class="col-sm-6">
-				<p class="text-white-50"> Made wtih PHP Laravel 7+
-					<br> by Md. Moshiur Rahman
-				</p>
+			<div class="col-md-8 text-md-center">
+				<span class="px-2">info@pixsellz.io</span>
+				<span class="px-2">+879-332-9375</span>
+				<span class="px-2">Street name 123, Avanue abc</span>
 			</div>
-			<div class="col-sm-6">
-				<p class="text-md-right text-white-50">
-					Copyright &copy
-					<br>
-					<a href="http://bootstrap-ecommerce.com" class="text-white-50">Bootstrap-ecommerce UI kit</a>
-				</p>
+			<div class="col-md-2 text-md-right text-muted">
+				<i class="fab fa-lg fa-cc-visa"></i>
+				<i class="fab fa-lg fa-cc-paypal"></i>
+				<i class="fab fa-lg fa-cc-mastercard"></i>
 			</div>
 		</section>
-	</div>
+	</div><!-- //container -->
 </footer>
+
+  <!-- ========================= FOOTER END // =========================  -->
