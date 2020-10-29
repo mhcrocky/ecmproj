@@ -4,6 +4,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/fancybox/fancybox.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/owlcarousel/assets/owl.carousel.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/owlcarousel/assets/owl.theme.default.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ui.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" media="only screen and (max-width:1200px)">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ui2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive2.css') }}" media="only screen and (max-width:1200px)">
 
