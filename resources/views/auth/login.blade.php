@@ -1,7 +1,7 @@
 @extends('site.app')
 @section('title', 'Login')
 @section('content')
-<section class="section-pagetop bg-dark">
+<section class="section-pagetop bg-info">
     <div class="container clearfix">
         <h2 class="title-page">Login</h2>
     </div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block"> Login </button>
+                            <button type="submit" class="btn btn-success btn-block bg-info"> Login </button>
                         </div>
                     </form>
                 </article>
