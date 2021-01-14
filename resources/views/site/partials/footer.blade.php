@@ -56,7 +56,7 @@
 <hr>
 		<section class="footer-bottom row">
 			<div class="col-md-6">
-				<p class="text-muted"> Copyright &copy; {{ date('Y')}} <a href="https://vorsurm.herokuapp.com" traget="_blank"> vorsurm</a> - All Rights Reserved. </p>
+				<p class="text-muted"> Copyright &copy; {{ date('Y')}} <a href="https://vorsurm.herokuapp.com" traget="_blank"> VORSURM </a> - All Rights Reserved. </p>
 			</div>
 			<!-- <div class="col-md-2 text-md-center">
 				<span class="px-2">demo content</span>
