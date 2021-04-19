@@ -103,15 +103,3 @@ DB_PASSWORD=password
 
 ---
 
-## Questions and Answers
-
-### Coming soon... 
-
-## Summary
-
-- comming soon...
-
-## References
-
-- http://bootstrap-ecommerce.com/
-- https://github.com/pratikborsadiya/vali-admin
